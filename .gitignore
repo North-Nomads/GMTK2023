@@ -84,13 +84,13 @@ fabric.properties
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
+GMTK2023/[Ll]ibrary/
+GMTK2023/[Tt]emp/
+GMTK2023/[Oo]bj/
+GMTK2023/[Bb]uild/
+GMTK2023/[Bb]uilds/
+GMTK2023/[Ll]ogs/
+GMTK2023/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
