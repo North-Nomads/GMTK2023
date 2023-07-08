@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="142d9093-1179-422a-8800-0e43762800b1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Stones.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Stones.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/ObservePlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/ObservePlayerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/Block.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/Block.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" afterDir="false" />
     </list>

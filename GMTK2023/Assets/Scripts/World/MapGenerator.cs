@@ -7,7 +7,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private int mapSize;
     [SerializeField] private Block tile;
     [SerializeField] private StoneBlock stonePrefab;
-    
+    [SerializeField] private PlayerBehavior playerBehavior;
     private void Start()
     {
         var scaleFactor = tile.ScaleFactor * 2;
@@ -27,6 +27,8 @@ public class MapGenerator : MonoBehaviour
             }
         }
         GenerateStones();
+
+        Instantiate(playerBehavior, Vector3.up * 5, Quaternion.identity);
     }
 
     private void GenerateStones()

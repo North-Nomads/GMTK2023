@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Search;
 using UnityEngine;
 
 
@@ -10,18 +9,19 @@ public class PlayerBehavior : MonoBehaviour
     
     private List<BasicPlayerState> _playerStates;
     private BasicPlayerState _currentState;
-    private Vector2Int _destinationPoint;
     private Vector2Int _playerPosition;
 
+    public Vector2Int DestinationPoint { get; set; }
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _playerStates = new()
         {
-            new IdlePlayerState(this),
             new ObservePlayerState(this),
-            new SortingPlayerState(this),
-            new BuildingPlayerState(this)
+            new BuildingPlayerState(this),
+            new IdlePlayerState(this),
+            new SortingPlayerState(this)
         };
         _currentState = _playerStates[0];
     }
