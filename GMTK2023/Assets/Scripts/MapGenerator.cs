@@ -1,17 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     [SerializeField] private int mapSize;
+    [SerializeField] private int offset;
+    [SerializeField] private GameObject tile;
+
     void Start()
     {
+        for(int i = -1 * mapSize / 2; i < mapSize / 2; i++)
+            for (int j = -1 * mapSize / 2; j < mapSize / 2; j++)
+                Instantiate(tile, new Vector3(i * offset, 0.5f * offset, j * offset), new Quaternion());
         
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         
