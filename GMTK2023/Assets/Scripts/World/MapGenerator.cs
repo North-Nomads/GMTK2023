@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
@@ -9,6 +10,10 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
+        BlockHolder.WorldSize = mapSize;
+        BlockHolder.Blocks = new Block[mapSize, mapSize];
+        BlockHolder.Entities = new List<PlaceableBlock>();
+        
         for(int i = -mapSize / 2; i < mapSize / 2; i++)
             for (int j = -mapSize / 2; j < mapSize / 2; j++)
                 Instantiate(tile, new Vector3(i * offset, 0.5f * offset, j * offset), new Quaternion());

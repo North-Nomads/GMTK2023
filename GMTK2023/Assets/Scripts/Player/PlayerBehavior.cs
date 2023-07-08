@@ -1,36 +1,99 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Search;
 using UnityEngine;
+
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private List<BasicPlayerState> playerStates;
-    private BasicPlayerState currentState;
+    [SerializeField] private int scanRadius;
+    
+    private List<BasicPlayerState> _playerStates;
+    private BasicPlayerState _currentState;
+    private Vector2Int _destinationPoint;
+    private Vector2Int _playerPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerStates = new()
+        _playerStates = new()
         {
             new IdlePlayerState(this),
             new ObservePlayerState(this),
             new SortingPlayerState(this),
             new BuildingPlayerState(this)
         };
-        currentState = playerStates[0];
+        _currentState = _playerStates[0];
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        currentState.Update();
+        _currentState.Update();
     }
 
     public void SwitchState<T>() where T : BasicPlayerState
     {
-        currentState.OnStateLeave();
-        currentState = playerStates.OfType<T>().First();
-        currentState.OnStateEnter();
+        _currentState.OnStateLeave();
+        _currentState = _playerStates.OfType<T>().First();
+        _currentState.OnStateEnter();
     }
+
+    /// <summary>
+    /// Scans area around player according to his scan radius
+    /// </summary>
+    /// <typeparam name="T">PlacebleBlock we scan for</typeparam>
+    /// <returns>List of blocks that satisfy generic</returns>
+    public List<Block> ScanAreaAroundPlayer<T>() where T : PlaceableBlock
+    {
+        List<Block> blocks = new(); 
+        var half = scanRadius / 2;
+        var playerX = _playerPosition[0];
+        var playerY = _playerPosition[1];
+        for (int i = playerX - half; i < playerX + half; i++)
+        for (int j = playerY - half; j < playerY + half; j++)
+                if (BlockHolder.Blocks[i, j].PlacedBlock is T)
+                    blocks.Add(BlockHolder.Blocks[i, j]);
+
+        return blocks;
+    }
+
+    /// <summary>
+    /// Performs movement on new point if it's available
+    /// </summary>
+    /// <param name="point">Point to walk on</param>
+    public bool MoveOnPoint(Vector2Int point)
+    {
+        if (point[0] > BlockHolder.WorldSize || point[1] > BlockHolder.WorldSize)
+            return false;
+
+        if (Mathf.Abs(_playerPosition[0] - point[0]) > 1 || Mathf.Abs(_playerPosition[1] - point[1]) > 1)
+            return false;
+
+        _playerPosition = point;
+        return true;
+    }
+
+    /// <summary>
+    /// Calculates next point to walk towards to based on current player coords
+    /// </summary>
+    /// <param name="destination">Final point</param>
+    /// <returns>Coordinates of next block</returns>
+    public Vector2Int GetNextCoordTowards(Vector2Int destination)
+    {
+        var xDistance = destination[0] - _playerPosition[0];
+        var yDistance = destination[1] - _playerPosition[1];
+        
+        // Move by X axis if deltaX is wider than deltaY
+        if (Mathf.Abs(xDistance) > Mathf.Abs(yDistance))
+            return _playerPosition + new Vector2Int(xDistance, 0);
+        
+        // Move by Y axis if deltaY is longer than deltaX
+        if (Mathf.Abs(xDistance) < Mathf.Abs(yDistance))
+            return _playerPosition + new Vector2Int(0, yDistance);
+
+        // Move diagonally if deltaX == deltaY
+        return _playerPosition + new Vector2Int(xDistance, yDistance);
+    }
+    
 }
