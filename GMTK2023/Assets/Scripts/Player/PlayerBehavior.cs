@@ -13,6 +13,10 @@ public class PlayerBehavior : MonoBehaviour
     private Vector2Int _playerPosition;
 
     public PlayerInventory Inventory { get; private set; }
+    public Vector2Int PlayerPosition { 
+        get => _playerPosition; 
+        set => _playerPosition = value; 
+    }
 
 
     // Start is called before the first frame update
@@ -51,10 +55,11 @@ public class PlayerBehavior : MonoBehaviour
     /// <returns>List of blocks that satisfy generic</returns>
     public List<Block> ScanAreaAroundPlayer<T>() where T : PlaceableBlock
     {
-        List<Block> blocks = new(); 
+        List<Block> blocks = new();
         var half = scanRadius / 2;
         var playerX = _playerPosition[0];
         var playerY = _playerPosition[1];
+        print($"{playerX} {playerY}");
         for (int i = playerX - half; i < playerX + half; i++)
         for (int j = playerY - half; j < playerY + half; j++)
                 if (BlockHolder.Blocks[i, j].PlacedBlock is T)
@@ -88,7 +93,7 @@ public class PlayerBehavior : MonoBehaviour
     public Vector2Int GetNextCoordTowards(Vector2Int destination)
     {
         var xDistance = destination[0] - _playerPosition[0];
-        var yDistance = destination[1] - _playerPosition[1];
+        var yDistance = (destination[1] - _playerPosition[1]) * -1;
 
         var xSign = Sign(xDistance);
         var ySign = Sign(yDistance);

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using World;
 
@@ -44,5 +45,10 @@ public class Block : MonoBehaviour
     {
         var stone = Instantiate(stonePrefab.Prefab, new Vector3(transform.position.x, transform.position.y + 3.5f, transform.position.z), Quaternion.identity);
         PlacedBlock = stone.GetComponent<StoneBlock>();
+    }
+
+    public void ClearOre()
+    {
+        Destroy(_entityBlock);
     }
 }

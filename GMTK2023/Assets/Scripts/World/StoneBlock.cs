@@ -4,13 +4,14 @@ namespace World
 {
     public class StoneBlock : PlaceableBlock
     {
-        [SerializeField] private int size;
+        [SerializeField] private int amount;
         [SerializeField] private GameObject prefab;
+        [SerializeField] private InventoryItem inventoryitem;
         
-        public int Size
+        public int Amount
         {
-            get => size;
-            set => size = value;
+            get => amount;
+            set => amount = value;
         }
         public GameObject Prefab => prefab;
 
@@ -19,7 +20,7 @@ namespace World
 
         public override ItemsPack PickItemsUp()
         {
-            throw new System.NotImplementedException();
+            return new ItemsPack(inventoryitem, amount);
         }
     }
 }

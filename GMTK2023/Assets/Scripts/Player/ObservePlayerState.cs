@@ -21,7 +21,11 @@ internal class ObservePlayerState : BasicPlayerState
         
         var coords = Player.GetNextCoordTowards(closestBlock.Position);
         Player.MoveOnPoint(coords);
-
+        if (closestBlock.Position == Player.PlayerPosition)
+        {
+            Player.Inventory.AddItems(closestBlock.PlacedBlock.PickItemsUp());
+            closestBlock.ClearOre();
+        }
         _currentScanTimer = _scanTimer;
 
     }
@@ -29,9 +33,11 @@ internal class ObservePlayerState : BasicPlayerState
     private Block GetClosetBlock(List<Block> blocks)
     {
         var closest = blocks[0];
+        Debug.Log(closest);
         var closestDistance = Vector3.Distance(Player.transform.position, closest.transform.position);
         foreach (var block in blocks)
         {
+            Debug.Log(block);
             var newDistance = Vector3.Distance(Player.transform.position, block.transform.position);
             if (newDistance < closestDistance)
             {
