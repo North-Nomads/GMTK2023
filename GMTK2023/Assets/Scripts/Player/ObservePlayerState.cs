@@ -14,10 +14,21 @@ internal class ObservePlayerState : BasicPlayerState
 
     public override void Update()
     {
+        
+        
         _currentScanTimer -= Time.deltaTime;
         if (_currentScanTimer >= 0) return;
         // Reboot timer
         _currentScanTimer = _scanTimer;
+        
+        if (Player.Inventory.Size == 2)
+        {
+            var baseCoords = Player.GetNextCoordTowards(Player.PlayerBaseCoords); // base
+            Player.MoveOnPoint(baseCoords);
+            if (Player.PlayerPosition == Player.PlayerBaseCoords) 
+                Player.SwitchState<BuildingPlayerState>();
+            return;
+        }
 
         // Set goal if none
         if (_goalBlock is null)
@@ -26,6 +37,7 @@ internal class ObservePlayerState : BasicPlayerState
             if (blocks.Count == 0)
             {
                 Player.MoveOnPoint(Player.PlayerPosition + new Vector2Int(Random.Range(-1, 1), Random.Range(-1, 1)));
+                Player.Inventory.Size = 2; // TODO: Убрать, временное решение для перехода в building
                 return;
             }
 

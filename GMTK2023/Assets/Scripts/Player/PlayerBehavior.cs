@@ -11,7 +11,9 @@ public class PlayerBehavior : MonoBehaviour
     private BasicPlayerState _currentState;
     private Vector2Int _destinationPoint;
     private Vector2Int _playerPosition;
+    private Vector2Int _playerBaseCoords;
 
+    public Vector2Int PlayerBaseCoords => _playerBaseCoords;
     public PlayerInventory Inventory { get; private set; }
     public Vector2Int PlayerPosition { 
         get => _playerPosition; 
@@ -22,8 +24,10 @@ public class PlayerBehavior : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        
         var half = BlockHolder.WorldSize / 2;
         _playerPosition = new Vector2Int(half, half);
+        _playerBaseCoords = _playerPosition;
         Inventory = new(10);
         _playerStates = new()
         {
