@@ -22,9 +22,9 @@ public class MapGenerator : MonoBehaviour
         BlockHolder.Blocks = new Block[mapSize, mapSize];
         BlockHolder.Entities = new List<PlaceableBlock>();
         var halfMap = mapSize / 2;
-        for (int i = -halfMap; i < halfMap; i++)
+        for (int i = -halfMap; i <= halfMap; i++)
         {
-            for (int j = -halfMap; j < halfMap; j++){
+            for (int j = -halfMap; j <= halfMap; j++){
                 var block = Instantiate(tile, new Vector3(i * scaleFactor, 0.5f * scaleFactor, j * scaleFactor), new Quaternion());
                 block.SetPosition(new Vector2Int(i+ halfMap, j + halfMap));
                 BlockHolder.Blocks[i + halfMap, j + halfMap] = block;
@@ -40,9 +40,9 @@ public class MapGenerator : MonoBehaviour
     {
         var stoneValue = 0.45f;
         var halfMap = mapSize / 2;
-        for (int i = -halfMap; i < halfMap; i++)
+        for (int i = -halfMap; i <= halfMap; i++)
         {
-            for (int j = -halfMap; j < halfMap; j++)
+            for (int j = -halfMap; j <= halfMap; j++)
             {
                 float seed = Mathf.PerlinNoise((i + halfMap) / (float)mapSize * noiseScale, (j + halfMap) / (float)mapSize * noiseScale);
                 if (seed > stoneValue * 1.2f)
