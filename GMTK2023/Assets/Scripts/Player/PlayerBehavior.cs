@@ -40,6 +40,11 @@ public class PlayerBehavior : MonoBehaviour
         _currentState.OnStateEnter();
     }
 
+    public void SetPosition(Vector2Int position)
+    {
+        _playerPosition = position;
+    } 
+
     /// <summary>
     /// Scans area around player according to his scan radius
     /// </summary>

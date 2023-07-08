@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="142d9093-1179-422a-8800-0e43762800b1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +22,9 @@
         <option name="url" value="https://github.com/North-Nomads/GMTK2023.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectId" id="2SIhco9nNVRzIwW8gXQyj2Uy5sy" />
@@ -91,7 +95,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688840093425</updated>
-      <workItem from="1688840096606" duration="311000" />
+      <workItem from="1688840096606" duration="712000" />
     </task>
     <servers />
   </component>
@@ -117,26 +121,26 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs</url>
-          <line>66</line>
+          <line>71</line>
           <properties documentPath="F:\Unity\GMTK2023\GMTK2023\Assets\Scripts\Player\PlayerBehavior.cs" initialLine="66" containingFunctionPresentation="method 'MoveOnPoint'">
             <startOffsets>
-              <option value="2010" />
+              <option value="2109" />
             </startOffsets>
             <endOffsets>
-              <option value="2011" />
+              <option value="2110" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerBehavior.cs</url>
-          <line>85</line>
+          <line>90</line>
           <properties documentPath="F:\Unity\GMTK2023\GMTK2023\Assets\Scripts\Player\PlayerBehavior.cs" initialLine="85" containingFunctionPresentation="method 'GetNextCoordTowards'">
             <startOffsets>
-              <option value="2777" />
+              <option value="2876" />
             </startOffsets>
             <endOffsets>
-              <option value="2778" />
+              <option value="2877" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="8" />
