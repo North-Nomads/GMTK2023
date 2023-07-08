@@ -1,4 +1,5 @@
 using UnityEngine;
+using World;
 
 public class Block : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Block : MonoBehaviour
     private Vector2Int _position;
     private PlaceableBlock _entityBlock;
     private bool _isEnabledForPlayer = true;
+
+    public Transform EntityAnchor => entityAnchor;
 
     public float GetBlockStress => _entityBlock.AdditionalStress + defaultStressValue;
 
@@ -33,5 +36,11 @@ public class Block : MonoBehaviour
     public void SetPosition(Vector2Int position)
     {
         _position = position;
+    }
+
+    public void SetPlaceableBlock(StoneBlock stonePrefab)
+    {
+        var stone = Instantiate(stonePrefab, EntityAnchor.position, Quaternion.identity);
+        PlacedBlock = stone;
     }
 }

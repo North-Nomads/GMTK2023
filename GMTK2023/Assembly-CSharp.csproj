@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Player\SortingPlayerState.cs" />
      <Compile Include="Assets\Scripts\World\Block.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBehavior.cs" />
+     <Compile Include="Assets\Scripts\World\StoneBlock.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerInventory.cs" />
      <Compile Include="Assets\Scripts\World\MapGenerator.cs" />
      <Compile Include="Assets\Scripts\Player\BuildingPlayerState.cs" />
