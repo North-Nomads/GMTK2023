@@ -75,17 +75,16 @@ public class PlayerBehavior : MonoBehaviour
     /// Performs movement on new point if it's available
     /// </summary>
     /// <param name="point">Point to walk on</param>
-    public bool MoveOnPoint(Vector2Int point)
+    public void MoveOnPoint(Vector2Int point)
     {
-        if (point[0] > BlockHolder.WorldSize || point[1] > BlockHolder.WorldSize)
-            return false;
+        if (point[0] > BlockHolder.WorldSize || point[1] > BlockHolder.WorldSize) return;
 
-        if (Mathf.Abs(_playerPosition[0] - point[0]) > 1 || Mathf.Abs(_playerPosition[1] - point[1]) > 1)
-            return false;
+        if (point[0] < 0 || point[1] < 0) return;
+
+        if (Mathf.Abs(_playerPosition[0] - point[0]) > 1 || Mathf.Abs(_playerPosition[1] - point[1]) > 1) return;
 
         _playerPosition = point;
         gameObject.transform.position = BlockHolder.Blocks[point[0], point[1]].transform.position + Vector3.up * 5;
-        return true;
     }
     
     /// <summary>

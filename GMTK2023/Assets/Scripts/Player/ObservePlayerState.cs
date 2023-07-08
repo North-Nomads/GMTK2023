@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using World;
 
 internal class ObservePlayerState : BasicPlayerState
 {
-    private float _scanTimer = 3f;
+    private float _scanTimer = .5f;
     private float _currentScanTimer;
     private PlaceableBlock _goalBlock;
     public ObservePlayerState(PlayerBehavior player) : base(player)
@@ -17,19 +16,23 @@ internal class ObservePlayerState : BasicPlayerState
     {
         _currentScanTimer -= Time.deltaTime;
         if (_currentScanTimer >= 0) return;
+        // Reboot timer
+        _currentScanTimer = _scanTimer;
 
         // Set goal if none
         if (_goalBlock is null)
         {
             var blocks = Player.ScanAreaAroundPlayer<StoneBlock>();
             if (blocks.Count == 0)
+            {
+                Player.MoveOnPoint(Player.PlayerPosition + new Vector2Int(Random.Range(-1, 1), Random.Range(-1, 1)));
                 return;
-        
-            _goalBlock = GetClosetBlock(blocks).PlacedBlock;    
+            }
+
+            _goalBlock = GetClosetBlock(blocks).PlacedBlock;
         }
-        
+
         // Follow current goal
-        Debug.Log(_goalBlock.ParentBlock.Position);
         var coords = Player.GetNextCoordTowards(_goalBlock.ParentBlock.Position);
         Player.MoveOnPoint(coords);
         
@@ -40,9 +43,6 @@ internal class ObservePlayerState : BasicPlayerState
             _goalBlock.ParentBlock.ClearOre();
             _goalBlock = null;
         }
-        
-        // Reboot timer
-        _currentScanTimer = _scanTimer;
     }
 
     private Block GetClosetBlock(List<Block> blocks)
