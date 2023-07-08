@@ -5,19 +5,12 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField] private int mapSize;
     [SerializeField] private int offset;
-    [SerializeField] private GameObject tile;
+    [SerializeField] private Block tile;
 
-    void Start()
+    private void Start()
     {
-        for(int i = -1 * mapSize / 2; i < mapSize / 2; i++)
-            for (int j = -1 * mapSize / 2; j < mapSize / 2; j++)
+        for(int i = -mapSize / 2; i < mapSize / 2; i++)
+            for (int j = -mapSize / 2; j < mapSize / 2; j++)
                 Instantiate(tile, new Vector3(i * offset, 0.5f * offset, j * offset), new Quaternion());
-        
-    }
-
-
-    void Update()
-    {
-        
     }
 }
