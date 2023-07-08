@@ -10,6 +10,8 @@ public class Block : MonoBehaviour
     private PlaceableBlock _entityBlock;
     private bool _isEnabledForPlayer = true;
 
+    public Vector2Int Position => _position;
+
     public Transform EntityAnchor => entityAnchor;
 
     public float GetBlockStress => _entityBlock.AdditionalStress + defaultStressValue;

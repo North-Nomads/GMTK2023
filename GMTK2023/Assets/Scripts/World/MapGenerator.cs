@@ -41,7 +41,6 @@ public class MapGenerator : MonoBehaviour
             for (int j = -halfMap; j < halfMap; j++)
             {
                 float seed = Mathf.PerlinNoise((i + halfMap) / (float)mapSize * scale, (j + halfMap) / (float)mapSize * scale);
-                print(seed);
                 if (seed > stoneValue * 1.2f)
                 {
                     BlockHolder.Blocks[i + halfMap, j + halfMap].SetPlaceableBlock(stonePrefab_small);
