@@ -9,7 +9,10 @@ public class PlayerBehavior : MonoBehaviour
     
     private List<BasicPlayerState> _playerStates;
     private BasicPlayerState _currentState;
+    private Vector2Int _destinationPoint;
     private Vector2Int _playerPosition;
+
+    public PlayerInventory Inventory { get; private set; }
 
 
     // Start is called before the first frame update
@@ -17,6 +20,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         var half = BlockHolder.WorldSize / 2;
         _playerPosition = new Vector2Int(half, half);
+        Inventory = new(10);
         _playerStates = new()
         {
             new ObservePlayerState(this),
@@ -39,11 +43,6 @@ public class PlayerBehavior : MonoBehaviour
         _currentState = _playerStates.OfType<T>().First();
         _currentState.OnStateEnter();
     }
-
-    public void SetPosition(Vector2Int position)
-    {
-        _playerPosition = position;
-    } 
 
     /// <summary>
     /// Scans area around player according to his scan radius
@@ -70,7 +69,6 @@ public class PlayerBehavior : MonoBehaviour
     /// <param name="point">Point to walk on</param>
     public bool MoveOnPoint(Vector2Int point)
     {
-        Debug.Log($"{point} / {_playerPosition}");
         if (point[0] > BlockHolder.WorldSize || point[1] > BlockHolder.WorldSize)
             return false;
 
