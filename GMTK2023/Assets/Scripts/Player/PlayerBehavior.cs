@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Search;
 using UnityEngine;
 
 
@@ -15,16 +14,19 @@ public class PlayerBehavior : MonoBehaviour
 
     public PlayerInventory Inventory { get; private set; }
 
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        var half = BlockHolder.WorldSize / 2;
+        _playerPosition = new Vector2Int(half, half);
         Inventory = new(10);
         _playerStates = new()
         {
-            new IdlePlayerState(this),
             new ObservePlayerState(this),
-            new SortingPlayerState(this),
-            new BuildingPlayerState(this)
+            new BuildingPlayerState(this),
+            new IdlePlayerState(this),
+            new SortingPlayerState(this)
         };
         _currentState = _playerStates[0];
     }
@@ -74,11 +76,12 @@ public class PlayerBehavior : MonoBehaviour
             return false;
 
         _playerPosition = point;
+        gameObject.transform.position = BlockHolder.Blocks[point[0], point[1]].transform.position + Vector3.up * 5;
         return true;
     }
-
+    
     /// <summary>
-    /// Calculates next point to walk towards to based on current player coords
+    /// Calculates next point to walk towards based on current player coords
     /// </summary>
     /// <param name="destination">Final point</param>
     /// <returns>Coordinates of next block</returns>
@@ -86,17 +89,29 @@ public class PlayerBehavior : MonoBehaviour
     {
         var xDistance = destination[0] - _playerPosition[0];
         var yDistance = destination[1] - _playerPosition[1];
+
+        var xSign = Sign(xDistance);
+        var ySign = Sign(yDistance);
         
         // Move by X axis if deltaX is wider than deltaY
         if (Mathf.Abs(xDistance) > Mathf.Abs(yDistance))
-            return _playerPosition + new Vector2Int(xDistance, 0);
+            return _playerPosition + new Vector2Int(1 * xSign, 0);
         
         // Move by Y axis if deltaY is longer than deltaX
         if (Mathf.Abs(xDistance) < Mathf.Abs(yDistance))
-            return _playerPosition + new Vector2Int(0, yDistance);
+            return _playerPosition + new Vector2Int(0, 1 * ySign);
 
         // Move diagonally if deltaX == deltaY
-        return _playerPosition + new Vector2Int(xDistance, yDistance);
+        return _playerPosition + new Vector2Int(xSign, ySign);
+
+        int Sign(int value)
+        {
+            if (value == 0)
+                return 0;
+            if (value > 0)
+                return 1;
+            return -1;
+        }
     }
     
 }

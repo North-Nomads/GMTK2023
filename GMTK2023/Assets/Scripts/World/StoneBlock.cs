@@ -1,15 +1,25 @@
-using System.Linq;
+using UnityEngine;
 
 namespace World
 {
     public class StoneBlock : PlaceableBlock
     {
-        public override IGrouping<InventoryItem, int> PickItemsUp()
+        [SerializeField] private int size;
+        [SerializeField] private GameObject prefab;
+        
+        public int Size
         {
-            throw new System.NotImplementedException();
+            get => size;
+            set => size = value;
         }
+        public GameObject Prefab => prefab;
 
         public override void ProcessTick()
         { }
+
+        public override ItemsPack PickItemsUp()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
