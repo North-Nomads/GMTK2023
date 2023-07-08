@@ -372,7 +372,7 @@ MonoBehaviour:
   stonePrefab_small: {fileID: 2547967918518213282, guid: 1b9de70443a782d44abebfd98c4aa536, type: 3}
   stonePrefab_medium: {fileID: 5238547517017323055, guid: c173201d11a35634e8f093f585bf8923, type: 3}
   stonePrefab_large: {fileID: 2988796561169163449, guid: 81f52b257cec2f3479849bd44f53fa79, type: 3}
-  scale: 20
+  noiseScale: 20
 --- !u!1 &1863394311
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +434,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 401cbf23d65137740855e83704db4ebe, type: 2}
+  - {fileID: 2100000, guid: 0aa3bbc8e5e62b14a9cab94fe7506b07, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -523,6 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba272b77baa0db144981b9e8ec7fe2c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapGenerator: {fileID: 1756332579}
 --- !u!1001 &8412275060308763416
 PrefabInstance:
   m_ObjectHideFlags: 0
