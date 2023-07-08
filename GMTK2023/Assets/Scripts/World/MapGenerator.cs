@@ -38,7 +38,7 @@ public class MapGenerator : MonoBehaviour
 
     private void GenerateStones()
     {
-        var stoneValue = 0.7f;
+        var stoneValue = 0.45f;
         var halfMap = mapSize / 2;
         for (int i = -halfMap; i < halfMap; i++)
         {

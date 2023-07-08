@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="142d9093-1179-422a-8800-0e43762800b1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/ObservePlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/ObservePlayerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/Block.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/Block.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/PlaceableBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/PlaceableBlock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1688840093425</updated>
       <workItem from="1688840096606" duration="1069000" />
-      <workItem from="1688851979932" duration="1265000" />
+      <workItem from="1688851979932" duration="2054000" />
     </task>
     <servers />
   </component>

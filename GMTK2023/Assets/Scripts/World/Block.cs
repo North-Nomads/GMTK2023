@@ -81,6 +81,7 @@ public class Block : MonoBehaviour
 
     public void ClearOre()
     {
+        Destroy(PlacedBlock.gameObject);
         BlockHolder.Blocks[Position[0], Position[1]].PlacedBlock = null;
     }
 }
