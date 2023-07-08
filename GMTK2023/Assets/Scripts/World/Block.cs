@@ -76,11 +76,11 @@ public class Block : MonoBehaviour
     {
         var stone = Instantiate(stonePrefab.Prefab, new Vector3(transform.position.x, transform.position.y + 3.5f, transform.position.z), Quaternion.identity);
         PlacedBlock = stone.GetComponent<StoneBlock>();
+        PlacedBlock.ParentBlock = this;
     }
 
     public void ClearOre()
     {
-        //BlockHolder.Blocks[Position[0], Position[1]].PlacedBlock = null;
-        Destroy(_placeableBlock.gameObject);
+        BlockHolder.Blocks[Position[0], Position[1]].PlacedBlock = null;
     }
 }

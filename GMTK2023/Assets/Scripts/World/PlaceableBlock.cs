@@ -3,7 +3,8 @@ using UnityEngine;
 public abstract class PlaceableBlock : MonoBehaviour
 {
     [SerializeField] private int additionalStress;
-
+    public Block ParentBlock { get; set; }
+    
     public int AdditionalStress => additionalStress;
 
     public abstract void ProcessTick();

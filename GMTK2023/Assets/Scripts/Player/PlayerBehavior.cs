@@ -92,7 +92,7 @@ public class PlayerBehavior : MonoBehaviour
     public Vector2Int GetNextCoordTowards(Vector2Int destination)
     {
         var xDistance = destination[0] - _playerPosition[0];
-        var yDistance = (destination[1] - _playerPosition[1]) * -1;
+        var yDistance = destination[1] - _playerPosition[1];
 
         var xSign = Sign(xDistance);
         var ySign = Sign(yDistance);

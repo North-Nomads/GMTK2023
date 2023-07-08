@@ -7,6 +7,7 @@ internal class ObservePlayerState : BasicPlayerState
 {
     private float _scanTimer = 3f;
     private float _currentScanTimer;
+    private PlaceableBlock _goalBlock;
     public ObservePlayerState(PlayerBehavior player) : base(player)
     {
         _currentScanTimer = _scanTimer;
@@ -16,22 +17,32 @@ internal class ObservePlayerState : BasicPlayerState
     {
         _currentScanTimer -= Time.deltaTime;
         if (_currentScanTimer >= 0) return;
-        
-        var blocks = Player.ScanAreaAroundPlayer<StoneBlock>();
-        if (blocks.Count == 0)
-            return;
-        
-        var closestBlock = GetClosetBlock(blocks);
-        Debug.Log(closestBlock);
-        var coords = Player.GetNextCoordTowards(closestBlock.Position);
-        Player.MoveOnPoint(coords);
-        if (closestBlock.Position == Player.PlayerPosition)
-        {
-            Player.Inventory.AddItems(closestBlock.PlacedBlock.PickItemsUp());
-            closestBlock.ClearOre();
-        }
-        _currentScanTimer = _scanTimer;
 
+        // Set goal if none
+        if (_goalBlock is null)
+        {
+            var blocks = Player.ScanAreaAroundPlayer<StoneBlock>();
+            if (blocks.Count == 0)
+                return;
+        
+            _goalBlock = GetClosetBlock(blocks).PlacedBlock;    
+        }
+        
+        // Follow current goal
+        Debug.Log(_goalBlock.ParentBlock.Position);
+        var coords = Player.GetNextCoordTowards(_goalBlock.ParentBlock.Position);
+        Player.MoveOnPoint(coords);
+        
+        // Goal reached check
+        if (_goalBlock.ParentBlock.Position == Player.PlayerPosition)
+        {
+            Player.Inventory.AddItems(_goalBlock.ParentBlock.PlacedBlock.PickItemsUp());
+            _goalBlock.ParentBlock.ClearOre();
+            _goalBlock = null;
+        }
+        
+        // Reboot timer
+        _currentScanTimer = _scanTimer;
     }
 
     private Block GetClosetBlock(List<Block> blocks)
