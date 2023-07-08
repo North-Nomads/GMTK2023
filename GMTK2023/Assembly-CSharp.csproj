@@ -46,23 +46,24 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\World\BlockHolder.cs" />
-     <Compile Include="Assets\Scripts\World\PlaceableBlock.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
+     <Compile Include="Assets\Scripts\Blocks\WorkbenchBlock.cs" />
      <Compile Include="Assets\Scripts\Player\IdlePlayerState.cs" />
      <Compile Include="Assets\Scripts\Player\InventoryItem.cs" />
      <Compile Include="Assets\Scripts\Player\ObservePlayerState.cs" />
+     <Compile Include="Assets\Scripts\Blocks\PlaceableBlock.cs" />
      <Compile Include="Assets\Scripts\Player\SortingPlayerState.cs" />
-     <Compile Include="Assets\Scripts\World\Block.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBehavior.cs" />
-     <Compile Include="Assets\Scripts\World\StoneBlock.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerInventory.cs" />
      <Compile Include="Assets\Scripts\World\MapGenerator.cs" />
+     <Compile Include="Assets\Scripts\Blocks\Block.cs" />
      <Compile Include="Assets\Scripts\Player\BuildingPlayerState.cs" />
      <Compile Include="Assets\Scripts\Player\BasicPlayerState.cs" />
-     <Compile Include="Assets\Scripts\World\WorkbenchBlock.cs" />
+     <Compile Include="Assets\Scripts\Blocks\StoneBlock.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Resources" />
      <Folder Include="Assets\Models" />
+     <Folder Include="Assets\Scripts\Blocks" />
      <Folder Include="Assets\Scripts" />
      <Folder Include="Assets\Materials" />
      <Folder Include="Assets\Scripts\World" />
