@@ -16,8 +16,12 @@ internal class ObservePlayerState : BasicPlayerState
         if (_currentScanTimer >= 0) return;
         
         var blocks = Player.ScanAreaAroundPlayer<StoneBlock>();
-        if (blocks.Count > 0)
-            Player.DestinationPoint = blocks[0].Position;
+        Debug.Log($"Scan + {blocks.Count}");
+
+        var coords = Player.GetNextCoordTowards(blocks[0].Position);
+        Debug.Log($"{blocks[0].Position}, {coords}");
+        Player.MoveOnPoint(coords);
+
         
         _currentScanTimer = _scanTimer;
 
