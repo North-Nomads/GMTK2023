@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    [SerivalizeField] private int size;
+    // Start is called before the first frame update
+    [SerializeField] private int mapSize;
     void Start()
     {
-        for(int  i = 0; i < 10; i++)
-        {
-
-        }    
+        
     }
 
+    // Update is called once per frame
     void Update()
     {
         
