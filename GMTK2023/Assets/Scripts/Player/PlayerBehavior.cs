@@ -13,9 +13,12 @@ public class PlayerBehavior : MonoBehaviour
     private Vector2Int _destinationPoint;
     private Vector2Int _playerPosition;
 
+    public PlayerInventory Inventory { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
+        Inventory = new(10);
         _playerStates = new()
         {
             new IdlePlayerState(this),

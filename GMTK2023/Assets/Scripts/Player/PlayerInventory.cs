@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class PlayerInventory : MonoBehaviour
     public PlayerInventory(int size)
     {
         inventorySlots = new InventorySlot[size];
+    }
+
+    public void AddItems(ItemsPack item)
+    {
+        AddItems(item.Item, item.Count);
     }
 
     public void AddItems(InventoryItem item, int amount)
@@ -42,6 +48,8 @@ public class PlayerInventory : MonoBehaviour
             }
         }
     }
+
+    public bool Contains(InventoryItem item) => inventorySlots.Any(x => x.Item == item);
 
     public class InventorySlot
     {
