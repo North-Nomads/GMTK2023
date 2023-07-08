@@ -6,6 +6,10 @@ public class Block : MonoBehaviour
     [SerializeField] private float defaultStressValue;
     [SerializeField] private float scaleFactor;
     [SerializeField] private Transform entityAnchor;
+    [SerializeField] private Texture enabledTexture;
+    [SerializeField] private Texture enadbledSelectedTexture;
+    [SerializeField] private Texture disadbledTexture;
+    [SerializeField] private Texture disadbledSelectedTexture;
     private Vector2Int _position;
     private bool _isEnabled;
     private PlaceableBlock _entityBlock;
@@ -22,18 +26,19 @@ public class Block : MonoBehaviour
         {
             _isEnabled = value;
             if (_isEnabled)
-                _renderer.material.color = new Color(0, 161, 0);
+                _renderer.material.SetTexture("_MainTex", enabledTexture);
             else
-                _renderer.material.color = new Color(161, 0, 0);
+                _renderer.material.SetTexture("_MainTex", disadbledTexture);
+            print("getfuckedbozo");
         }
     }
 
     public void Select()
     {
         if (_isEnabled)
-            _renderer.material.color = Color.green;
+            _renderer.material.SetTexture("_MainTex", enadbledSelectedTexture);
         else
-            _renderer.material.color = Color.red;
+            _renderer.material.SetTexture("_MainTex", disadbledSelectedTexture);
     }
 
     public void Hover()
