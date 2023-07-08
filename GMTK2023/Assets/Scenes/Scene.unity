@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5ebfdafc8f3014ba2d9985c905d35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 1
 --- !u!1 &1756332576
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,9 +367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8b9c36aaf34e14dbc0ee24c87f28df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSize: 512
+  mapSize: 20
   tile: {fileID: -8829316553392737983, guid: cb5b07f54bcbac340a107ab8211ccbd4, type: 3}
-  stonePrefab: {fileID: 0}
+  stonePrefab: {fileID: -6300932103563610939, guid: 1b9de70443a782d44abebfd98c4aa536, type: 3}
 --- !u!1 &1863394311
 GameObject:
   m_ObjectHideFlags: 0

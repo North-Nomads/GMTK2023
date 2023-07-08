@@ -40,7 +40,7 @@ public class Block : MonoBehaviour
 
     public void SetPlaceableBlock(StoneBlock stonePrefab)
     {
-        var stone = Instantiate(stonePrefab, EntityAnchor.position, Quaternion.identity);
+        var stone = Instantiate(stonePrefab, EntityAnchor);
         PlacedBlock = stone;
     }
 }
