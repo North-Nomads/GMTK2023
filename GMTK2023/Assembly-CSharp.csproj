@@ -47,7 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\World\BlockHolder.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
-     <Compile Include="Assets\Scripts\Blocks\WorkbenchBlock.cs" />
+     <Compile Include="Assets\Scripts\Blocks\InteractiveBlock.cs" />
      <Compile Include="Assets\Scripts\Player\IdlePlayerState.cs" />
      <Compile Include="Assets\Scripts\Player\InventoryItem.cs" />
      <Compile Include="Assets\Scripts\Player\ObservePlayerState.cs" />

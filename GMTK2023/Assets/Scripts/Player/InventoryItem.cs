@@ -3,11 +3,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Inventory Item", menuName = "Inventory Item")]
 public class InventoryItem : ScriptableObject
 {
-    public string Name { get; set; }
+    [SerializeField] private InventoryItem craftResult;
+    [SerializeField] private string itemName;
+    [SerializeField] private int maxAmount;
+    [SerializeField] private ItemCraftType type;
 
-    public int MaxAmount { get; set; }
+    public string Name => itemName;
 
-    public ItemCraftType CraftType { get; set; }
+    public int MaxAmount => maxAmount;
+
+    public ItemCraftType CraftType => type;
+
+    public InventoryItem CraftResult => craftResult;
 }
 
 public enum ItemCraftType
