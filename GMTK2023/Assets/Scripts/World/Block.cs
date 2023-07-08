@@ -29,7 +29,6 @@ public class Block : MonoBehaviour
                 _renderer.material.SetTexture("_MainTex", enabledTexture);
             else
                 _renderer.material.SetTexture("_MainTex", disadbledTexture);
-            print("getfuckedbozo");
         }
     }
 
