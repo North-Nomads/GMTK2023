@@ -1,5 +1,4 @@
 using UnityEngine;
-using World;
 
 public class Block : MonoBehaviour
 {
@@ -40,9 +39,9 @@ public class Block : MonoBehaviour
         _position = position;
     }
 
-    public void SetPlaceableBlock(StoneBlock stonePrefab)
+    public void SetPlaceableBlock(PlaceableBlock placeablePrefab)
     {
-        var stone = Instantiate(stonePrefab.Prefab, new Vector3(transform.position.x, transform.position.y + 3.5f, transform.position.z), Quaternion.identity);
-        PlacedBlock = stone.GetComponent<StoneBlock>();
+        var stone = Instantiate(placeablePrefab, new Vector3(transform.position.x, transform.position.y + 3.5f, transform.position.z), Quaternion.identity);
+        PlacedBlock = stone.GetComponent<PlaceableBlock>();
     }
 }
