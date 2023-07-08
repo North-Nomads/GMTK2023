@@ -16,5 +16,10 @@ namespace World
 
         public override void ProcessTick()
         { }
+
+        public override ItemsPack PickItemsUp()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
