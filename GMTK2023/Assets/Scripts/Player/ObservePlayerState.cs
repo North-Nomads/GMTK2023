@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using World;
 
@@ -16,14 +17,29 @@ internal class ObservePlayerState : BasicPlayerState
         if (_currentScanTimer >= 0) return;
         
         var blocks = Player.ScanAreaAroundPlayer<StoneBlock>();
-        Debug.Log($"Scan + {blocks.Count}");
-
-        var coords = Player.GetNextCoordTowards(blocks[0].Position);
-        Debug.Log($"{blocks[0].Position}, {coords}");
+        var closestBlock = GetClosetBlock(blocks);
+        
+        var coords = Player.GetNextCoordTowards(closestBlock.Position);
         Player.MoveOnPoint(coords);
 
-        
         _currentScanTimer = _scanTimer;
 
+    }
+
+    private Block GetClosetBlock(List<Block> blocks)
+    {
+        var closest = blocks[0];
+        var closestDistance = Vector3.Distance(Player.transform.position, closest.transform.position);
+        foreach (var block in blocks)
+        {
+            var newDistance = Vector3.Distance(Player.transform.position, block.transform.position);
+            if (newDistance < closestDistance)
+            {
+                closest = block;
+                closestDistance = newDistance;
+            }
+        }
+
+        return closest;
     }
 }
