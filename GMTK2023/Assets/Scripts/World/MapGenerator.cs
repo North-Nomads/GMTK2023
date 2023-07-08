@@ -24,10 +24,9 @@ public class MapGenerator : MonoBehaviour
         var halfMap = mapSize / 2;
         for (int i = -halfMap; i < halfMap; i++)
         {
-
             for (int j = -halfMap; j < halfMap; j++){
                 var block = Instantiate(tile, new Vector3(i * scaleFactor, 0.5f * scaleFactor, j * scaleFactor), new Quaternion());
-                block.SetPosition(new Vector2Int(i, j));
+                block.SetPosition(new Vector2Int(i+ halfMap, j + halfMap));
                 BlockHolder.Blocks[i + halfMap, j + halfMap] = block;
                 block.name = $"{i + halfMap}, {j + halfMap}";
             }

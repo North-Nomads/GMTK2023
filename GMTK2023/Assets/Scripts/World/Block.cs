@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using World;
 
@@ -9,7 +8,7 @@ public class Block : MonoBehaviour
     [SerializeField] private Transform entityAnchor;
     private Vector2Int _position;
     private bool _isEnabled;
-    private PlaceableBlock _entityBlock;
+    private PlaceableBlock _placeableBlock;
     private bool _isEnabledForPlayer = true;
     private MeshRenderer _renderer;
 
@@ -42,14 +41,14 @@ public class Block : MonoBehaviour
         
     }
 
-    public float GetBlockStress => _entityBlock.AdditionalStress + defaultStressValue;
+    public float GetBlockStress => _placeableBlock.AdditionalStress + defaultStressValue;
 
     public float ScaleFactor => scaleFactor;
 
     public PlaceableBlock PlacedBlock
     {
-        get => _entityBlock;
-        set => _entityBlock = value;
+        get => _placeableBlock;
+        set => _placeableBlock = value;
     }
 
     public bool IsEnabledForPlayer
@@ -65,7 +64,7 @@ public class Block : MonoBehaviour
 
     public void ProcessEntityBlock()
     {
-        _entityBlock.ProcessTick();
+        _placeableBlock.ProcessTick();
     }
 
     public void SetPosition(Vector2Int position)
@@ -81,6 +80,7 @@ public class Block : MonoBehaviour
 
     public void ClearOre()
     {
-        Destroy(_entityBlock);
+        //BlockHolder.Blocks[Position[0], Position[1]].PlacedBlock = null;
+        Destroy(_placeableBlock.gameObject);
     }
 }

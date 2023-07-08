@@ -59,7 +59,6 @@ public class PlayerBehavior : MonoBehaviour
         var half = scanRadius / 2;
         var playerX = _playerPosition[0];
         var playerY = _playerPosition[1];
-        print($"{playerX} {playerY}");
         for (int i = playerX - half; i < playerX + half; i++)
         for (int j = playerY - half; j < playerY + half; j++)
                 if (BlockHolder.Blocks[i, j].PlacedBlock is T)
