@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="142d9093-1179-422a-8800-0e43762800b1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/shelf/Uncommitted_changes_before_Merge_at_09_07_2023_13_06__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/shelf/Uncommitted_changes_before_Merge_at_09_07_2023_13_06__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/shelf/Uncommitted_changes_before_Update_at_09_07_2023_10_18__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/shelf/Uncommitted_changes_before_Update_at_09_07_2023_10_18__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/shelf/Uncommitted_changes_before_Update_at_09_07_2023_10_28__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/shelf/Uncommitted_changes_before_Update_at_09_07_2023_10_28__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Chest.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Chest.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Furnace.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Furnace.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/IdlePlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/IdlePlayerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2023/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/SortingPlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/SortingPlayerState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,10 +90,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19316">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="19316" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
