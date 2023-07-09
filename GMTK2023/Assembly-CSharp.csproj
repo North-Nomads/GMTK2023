@@ -63,6 +63,7 @@
      <Folder Include="Assets" />
      <Folder Include="Assets\Resources" />
      <Folder Include="Assets\Models" />
+     <Folder Include="Assets\Scripts\Blocks" />
      <Folder Include="Assets\Scripts" />
      <Folder Include="Assets\Materials" />
      <Folder Include="Assets\Scripts\World" />
