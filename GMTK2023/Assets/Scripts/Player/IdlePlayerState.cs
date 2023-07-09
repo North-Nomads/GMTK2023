@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-internal class IdlePlayerState : BasicPlayerState
+﻿internal class IdlePlayerState : BasicPlayerState
 {
     private const int InteractionDistance = 2;
 

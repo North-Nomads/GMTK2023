@@ -49,7 +49,6 @@
      <Compile Include="Assets\Scripts\World\PlaceableBlock.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\Player\IdlePlayerState.cs" />
-     <Compile Include="Assets\Scripts\Player\InventoryItem.cs" />
      <Compile Include="Assets\Scripts\Player\ObservePlayerState.cs" />
      <Compile Include="Assets\Scripts\Player\SortingPlayerState.cs" />
      <Compile Include="Assets\Scripts\World\Block.cs" />
