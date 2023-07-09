@@ -11,16 +11,24 @@ public class PlayerBehavior : MonoBehaviour
     private BasicPlayerState _currentState;
     private Vector2Int _destinationPoint;
     private Vector2Int _playerPosition;
+    private Vector2Int _playerBaseCoords;
 
+    public Vector2Int PlayerBaseCoords => _playerBaseCoords;
     public PlayerInventory Inventory { get; private set; }
+    public Vector2Int PlayerPosition { 
+        get => _playerPosition; 
+        set => _playerPosition = value; 
+    }
 
 
     // Start is called before the first frame update
     private void Start()
     {
+        
         var half = BlockHolder.WorldSize / 2;
         _playerPosition = new Vector2Int(half, half);
-        Inventory = new(10);
+        _playerBaseCoords = _playerPosition;
+        Inventory = new();
         _playerStates = new()
         {
             new ObservePlayerState(this),
@@ -51,14 +59,18 @@ public class PlayerBehavior : MonoBehaviour
     /// <returns>List of blocks that satisfy generic</returns>
     public List<Block> ScanAreaAroundPlayer<T>() where T : PlaceableBlock
     {
-        List<Block> blocks = new(); 
+        List<Block> blocks = new();
         var half = scanRadius / 2;
         var playerX = _playerPosition[0];
         var playerY = _playerPosition[1];
-        for (int i = playerX - half; i < playerX + half; i++)
-        for (int j = playerY - half; j < playerY + half; j++)
-                if (BlockHolder.Blocks[i, j].PlacedBlock is T)
-                    blocks.Add(BlockHolder.Blocks[i, j]);
+        for (int i = Mathf.Max(0, playerX - half); i < playerX + half && i < BlockHolder.WorldSize; i++)
+        for (int j = Mathf.Max(0, playerX - half); j < playerY + half && j < BlockHolder.WorldSize; j++)
+        {
+            print($"{i}, {j}");
+            if (BlockHolder.Blocks[i, j].PlacedBlock is T)
+                blocks.Add(BlockHolder.Blocks[i, j]);
+        }
+            
 
         return blocks;
     }
@@ -67,17 +79,16 @@ public class PlayerBehavior : MonoBehaviour
     /// Performs movement on new point if it's available
     /// </summary>
     /// <param name="point">Point to walk on</param>
-    public bool MoveOnPoint(Vector2Int point)
+    public void MoveOnPoint(Vector2Int point)
     {
-        if (point[0] > BlockHolder.WorldSize || point[1] > BlockHolder.WorldSize)
-            return false;
+        if (point[0] > BlockHolder.WorldSize || point[1] > BlockHolder.WorldSize) return;
 
-        if (Mathf.Abs(_playerPosition[0] - point[0]) > 1 || Mathf.Abs(_playerPosition[1] - point[1]) > 1)
-            return false;
+        if (point[0] < 0 || point[1] < 0) return;
+
+        if (Mathf.Abs(_playerPosition[0] - point[0]) > 1 || Mathf.Abs(_playerPosition[1] - point[1]) > 1) return;
 
         _playerPosition = point;
         gameObject.transform.position = BlockHolder.Blocks[point[0], point[1]].transform.position + Vector3.up * 5;
-        return true;
     }
     
     /// <summary>

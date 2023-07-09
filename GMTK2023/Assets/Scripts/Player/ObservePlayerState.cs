@@ -4,8 +4,9 @@ using World;
 
 internal class ObservePlayerState : BasicPlayerState
 {
-    private float _scanTimer = 3f;
+    private float _scanTimer = .5f;
     private float _currentScanTimer;
+    private PlaceableBlock _goalBlock;
     public ObservePlayerState(PlayerBehavior player) : base(player)
     {
         _currentScanTimer = _scanTimer;
@@ -15,15 +16,52 @@ internal class ObservePlayerState : BasicPlayerState
     {
         _currentScanTimer -= Time.deltaTime;
         if (_currentScanTimer >= 0) return;
-        
-        var blocks = Player.ScanAreaAroundPlayer<StoneBlock>();
-        var closestBlock = GetClosetBlock(blocks);
-        
-        var coords = Player.GetNextCoordTowards(closestBlock.Position);
-        Player.MoveOnPoint(coords);
-
+        // Reboot timer
         _currentScanTimer = _scanTimer;
+        
+        if (Player.Inventory.IsFull)
+        {
+            var baseCoords = Player.GetNextCoordTowards(Player.PlayerBaseCoords); // base
+            Player.MoveOnPoint(baseCoords);
+            if (Player.PlayerPosition == Player.PlayerBaseCoords)
+                Player.SwitchState<BuildingPlayerState>();
+            return;
+        }
 
+        // Set goal if none
+        if (_goalBlock is null)
+        {
+            var blocks = Player.ScanAreaAroundPlayer<StoneBlock>();
+            if (blocks.Count == 0)
+            {
+                Player.MoveOnPoint(Player.PlayerPosition + new Vector2Int(Random.Range(-1, 1), Random.Range(-1, 1)));
+                Player.Inventory.Stones = 2; // TODO: Убрать, временное решение для перехода в building
+                return;
+            }
+
+            _goalBlock = GetClosetBlock(blocks).PlacedBlock;
+        }
+
+        // Follow current goal
+        var coords = Player.GetNextCoordTowards(_goalBlock.ParentBlock.Position);
+        Player.MoveOnPoint(coords);
+        
+        // Goal reached check
+        if (_goalBlock.ParentBlock.Position == Player.PlayerPosition)
+        {
+            var items = _goalBlock.ParentBlock.PlacedBlock.PickItemsUp();
+            switch (items.Item)
+            {
+                case ItemType.Stone:
+                    Player.Inventory.Stones += items.Count;
+                    break;
+                case ItemType.Iron:
+                    Player.Inventory.Iron += items.Count;
+                    break;
+            }
+            _goalBlock.ParentBlock.ClearOre();
+            _goalBlock = null;
+        }
     }
 
     private Block GetClosetBlock(List<Block> blocks)
