@@ -8,13 +8,14 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private int mapSize;
     [SerializeField] private PlayerBehavior playerBehavior;
     [SerializeField] private Block tile;
-    [SerializeField] private StoneBlock stonePrefab_small;
-    [SerializeField] private StoneBlock stonePrefab_medium;
-    [SerializeField] private StoneBlock stonePrefab_large;
+    [SerializeField] private StoneBlock stonePrefab;
     [SerializeField] private float noiseScale;
-    
+    private PlayerBehavior _playerBehavior;
+
     public int MapSize { get => mapSize; }
     public Block Tile { get => tile; }
+
+    public PlayerBehavior Player { get => _playerBehavior; }
 
     private void Start()
     {
@@ -24,9 +25,9 @@ public class MapGenerator : MonoBehaviour
         BlockHolder.Entities = new List<PlaceableBlock>();
         BlockHolder.ActiveBlock = new();
         var halfMap = mapSize / 2;
-        for (int i = -halfMap; i <= halfMap; i++)
+        for (int i = -halfMap; i < halfMap; i++)
         {
-            for (int j = -halfMap; j <= halfMap; j++){
+            for (int j = -halfMap; j < halfMap; j++){
                 var block = Instantiate(tile, new Vector3(i * scaleFactor, 0.5f * scaleFactor, j * scaleFactor), new Quaternion());
                 block.SetPosition(new Vector2Int(i+ halfMap, j + halfMap));
                 BlockHolder.Blocks[i + halfMap, j + halfMap] = block;
@@ -36,31 +37,22 @@ public class MapGenerator : MonoBehaviour
         }
 
         GenerateStones();
-        Instantiate(playerBehavior, Vector3.up * 5, Quaternion.identity);
+        _playerBehavior = Instantiate(playerBehavior, Vector3.up * 5, Quaternion.identity);
     }
 
     private void GenerateStones()
     {
-        var stoneValue = 0.0f;
+        var stoneValue = 0.7f;
         var halfMap = mapSize / 2;
-        for (int i = -halfMap; i <= halfMap; i++)
+        for (int i = -halfMap; i < halfMap; i++)
         {
-            for (int j = -halfMap; j <= halfMap; j++)
+            for (int j = -halfMap; j < halfMap; j++)
             {
                 float seed = Mathf.PerlinNoise((i + halfMap) / (float)mapSize * noiseScale, (j + halfMap) / (float)mapSize * noiseScale);
-                if (seed > stoneValue * 1.2f)
+                if (seed > stoneValue)
                 {
-                    BlockHolder.Blocks[i + halfMap, j + halfMap].SetPlaceableBlock(stonePrefab_small);
+                    BlockHolder.Blocks[i + halfMap, j + halfMap].SetPlaceableBlock(stonePrefab);
                 }
-                else if (seed > stoneValue * 1.1f)
-                {
-                    BlockHolder.Blocks[i + halfMap, j + halfMap].SetPlaceableBlock(stonePrefab_medium);
-                }
-                else if (seed > stoneValue)
-                {
-                    BlockHolder.Blocks[i + halfMap, j + halfMap].SetPlaceableBlock(stonePrefab_large);
-                }
-
             }
         }
     }

@@ -44,7 +44,6 @@
      <Compile Include="Assets\Scripts\World\PlaceableBlock.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\Player\IdlePlayerState.cs" />
-     <Compile Include="Assets\Scripts\Player\InventoryItem.cs" />
      <Compile Include="Assets\Scripts\Player\ObservePlayerState.cs" />
      <Compile Include="Assets\Scripts\Player\SortingPlayerState.cs" />
      <Compile Include="Assets\Scripts\World\Block.cs" />
@@ -53,9 +52,11 @@
      <Compile Include="Assets\Scripts\World\StoneBlock.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerInventory.cs" />
      <Compile Include="Assets\Scripts\World\MapGenerator.cs" />
+     <Compile Include="Assets\Scripts\World\ChestBlock.cs" />
      <Compile Include="Assets\Scripts\TileSelector.cs" />
      <Compile Include="Assets\Scripts\Player\BuildingPlayerState.cs" />
      <Compile Include="Assets\Scripts\Player\BasicPlayerState.cs" />
+     <Compile Include="Assets\Scripts\World\WorkbenchBlock.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.4f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

@@ -1,11 +1,9 @@
 using UnityEngine;
-using World;
 
 public class Block : MonoBehaviour
 {
     [SerializeField] private float defaultStressValue;
     [SerializeField] private float scaleFactor;
-    [SerializeField] private Transform entityAnchor;
     [SerializeField] private Texture enabledTexture;
     [SerializeField] private Texture enadbledSelectedTexture;
     [SerializeField] private Texture disadbledTexture;
@@ -16,8 +14,6 @@ public class Block : MonoBehaviour
     private bool _isEnabledForPlayer = true;
     private MeshRenderer _renderer;
     public Vector2Int Position => _position;
-    public Transform EntityAnchor => entityAnchor;
-
     public MainStats Stats {get; set;}
 
     public bool IsEnabled 
@@ -30,15 +26,15 @@ public class Block : MonoBehaviour
                 _renderer.material.SetTexture("_MainTex", enabledTexture);
                 BlockHolder.ActiveBlock.Add(this);
                 Stats.StressInput += defaultStressValue;
-                if(_entityBlock != null)
-                    Stats.StressInput += _entityBlock.AdditionalStress;
+                if(_placeableBlock != null)
+                    Stats.StressInput += _placeableBlock.AdditionalStress;
             }
             else{
                 _renderer.material.SetTexture("_MainTex", disadbledTexture);
                 BlockHolder.ActiveBlock.Remove(this);
                 Stats.StressInput -= defaultStressValue;
-                if(_entityBlock != null)
-                    Stats.StressInput -= _entityBlock.AdditionalStress;
+                if(_placeableBlock != null)
+                    Stats.StressInput -= _placeableBlock.AdditionalStress;
             }
         }
     }

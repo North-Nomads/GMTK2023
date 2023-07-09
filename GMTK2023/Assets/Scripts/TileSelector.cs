@@ -23,8 +23,8 @@ public class TileSelector : MonoBehaviour
             {
                 if (hit.collider.gameObject.TryGetComponent<Block>(out var target))
                 {
-                    _startX = target.Position.x + mapGenerator.MapSize / 2;
-                    _startY = target.Position.y + mapGenerator.MapSize / 2;
+                    _startX = target.Position.x;
+                    _startY = target.Position.y;
                     target.Select();
                 }
             }
@@ -37,14 +37,21 @@ public class TileSelector : MonoBehaviour
             {
                 if (hit.collider.gameObject.TryGetComponent<Block>(out var target))
                 {
-                    endX = target.Position.x + mapGenerator.MapSize / 2;
-                    endY = target.Position.y + mapGenerator.MapSize / 2;
+                    endX = target.Position.x;
+                    endY = target.Position.y;
                 }
             }
             
-            for (int x = Math.Min(endX, _startX); x < Math.Max(endX, _startX) + 1; x++)
-                for (int y = Math.Min(endY, _startY); y < Math.Max(endY, _startY) + 1; y++)
-                    BlockHolder.Blocks[x, y].IsEnabled = !BlockHolder.Blocks[x, y].IsEnabled;
+
+                for (int x = Math.Min(endX, _startX); x < Math.Max(endX, _startX) + 1; x++)
+                    for (int y = Math.Min(endY, _startY); y < Math.Max(endY, _startY) + 1; y++){
+                        try{
+                           BlockHolder.Blocks[x, y].IsEnabled = !BlockHolder.Blocks[x, y].IsEnabled;
+                        }
+                        catch(Exception){
+                            print($"{x}, {y}");
+                        }
+            }
         }
 
     }
