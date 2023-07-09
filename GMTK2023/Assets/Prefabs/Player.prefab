@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1f83d22ecbbb02541b36b15481a37e4e, type: 2}
+  - {fileID: 2100000, guid: 212d2bcd7f84dd849807c37e81f9f9f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scanRadius: 9
-  furnace: {fileID: 7590250013359793030, guid: bf8de59dced765c4b92bdd9ea926ebe8, type: 3}
-  chest: {fileID: 2031665482280452906, guid: 64c715ebd5861bf4c9479f0d5113bed0, type: 3}
+  furnace: {fileID: 7922130348083482331, guid: abcd8792d5e784f42ab787de4921d981, type: 3}
+  chest: {fileID: 5547152658040717463, guid: 3d08d950bf738c54f9f2d26ea15fe167, type: 3}
 --- !u!114 &5519326144744770188
 MonoBehaviour:
   m_ObjectHideFlags: 0

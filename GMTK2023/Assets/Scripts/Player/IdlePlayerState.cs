@@ -3,13 +3,13 @@ using System.Linq;
 
 internal class IdlePlayerState : BasicPlayerState
 {
-    private IEnumerable<Block> _entities;
+    private List<Block> _entities;
     public IdlePlayerState(PlayerBehavior player) : base(player)
     { }
 
     public override void OnStateEnter()
     {
-        _entities = Player.ScanAreaAroundPlayer<WorkbenchBlock>().Where(x => ((WorkbenchBlock)x.PlacedBlock).IsCrafting);
+        _entities = Player.ScanAreaAroundPlayer<WorkbenchBlock>().Where(x => ((WorkbenchBlock)x.PlacedBlock).IsCrafting).ToList();
     }
 
     public override void Update()

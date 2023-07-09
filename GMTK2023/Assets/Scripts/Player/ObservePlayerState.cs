@@ -19,6 +19,8 @@ internal class ObservePlayerState : BasicPlayerState
         // Reboot timer
         _currentScanTimer = _scanTimer;
         
+        Debug.Log($"{Player.Inventory.Stones}, {Player.Inventory.Capacity}");
+        
         if (Player.Inventory.IsFull)
         {
             var baseCoords = Player.GetNextCoordTowards(Player.PlayerBaseCoords); // base
@@ -35,7 +37,6 @@ internal class ObservePlayerState : BasicPlayerState
             if (blocks.Count == 0)
             {
                 Player.MoveOnPoint(Player.PlayerPosition + new Vector2Int(Random.Range(-1, 1), Random.Range(-1, 1)));
-                Player.Inventory.Stones = 2; // TODO: Убрать, временное решение для перехода в building
                 return;
             }
 

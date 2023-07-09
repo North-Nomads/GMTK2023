@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1005609985067640191}
-  - component: {fileID: 5942251664153043851}
+  - component: {fileID: 8250663188657814512}
   m_Layer: 0
   m_Name: Stones_small
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5942251664153043851
+--- !u!114 &8250663188657814512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5993224058538206007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f27d594d981bd3e418d0f368c8e4d7ba, type: 3}
+  m_Script: {fileID: 11500000, guid: a59f7186dcbf417d9285363628f7b59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   additionalStress: 0

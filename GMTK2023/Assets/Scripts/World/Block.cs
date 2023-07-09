@@ -1,11 +1,9 @@
 using UnityEngine;
-using World;
 
 public class Block : MonoBehaviour
 {
     [SerializeField] private float defaultStressValue;
     [SerializeField] private float scaleFactor;
-    [SerializeField] private Transform entityAnchor;
     private Vector2Int _position;
     private bool _isEnabled;
     private PlaceableBlock _placeableBlock;
@@ -13,7 +11,6 @@ public class Block : MonoBehaviour
     private MeshRenderer _renderer;
 
     public Vector2Int Position => _position;
-    public Transform EntityAnchor => entityAnchor;
 
     public bool IsEnabled 
     { 
