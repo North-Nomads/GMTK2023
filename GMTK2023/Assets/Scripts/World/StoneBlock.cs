@@ -4,15 +4,22 @@ namespace World
 {
     public class StoneBlock : PlaceableBlock
     {
-        [SerializeField] private int size;
-        [SerializeField] private GameObject prefab;
-        public int Size
+        private readonly ItemType inventoryItem = ItemType.Stone;
+
+        [SerializeField] private int amount;
+        
+        public int Amount
         {
-            get => size;
-            set => size = value;
+            get => amount;
+            set => amount = value;
         }
-        public GameObject Prefab { get => prefab; }
+
         public override void ProcessTick()
         { }
+
+        public override ItemsPack PickItemsUp()
+        {
+            return new ItemsPack(inventoryItem, amount);
+        }
     }
 }

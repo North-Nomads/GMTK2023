@@ -12,7 +12,7 @@ public class Block : MonoBehaviour
     [SerializeField] private Texture disadbledSelectedTexture;
     private Vector2Int _position;
     private bool _isEnabled;
-    private PlaceableBlock _entityBlock;
+    private PlaceableBlock _placeableBlock;
     private bool _isEnabledForPlayer = true;
     private MeshRenderer _renderer;
     public Vector2Int Position => _position;
@@ -56,14 +56,14 @@ public class Block : MonoBehaviour
         
     }
 
-    public float GetBlockStress => _entityBlock.AdditionalStress + defaultStressValue;
+    public float GetBlockStress => _placeableBlock.AdditionalStress + defaultStressValue;
 
     public float ScaleFactor => scaleFactor;
 
     public PlaceableBlock PlacedBlock
     {
-        get => _entityBlock;
-        set => _entityBlock = value;
+        get => _placeableBlock;
+        set => _placeableBlock = value;
     }
 
     public bool IsEnabledForPlayer
@@ -79,7 +79,7 @@ public class Block : MonoBehaviour
 
     public void ProcessEntityBlock()
     {
-        _entityBlock.ProcessTick();
+        _placeableBlock.ProcessTick();
     }
 
     public void SetPosition(Vector2Int position)
@@ -87,9 +87,16 @@ public class Block : MonoBehaviour
         _position = position;
     }
 
-    public void SetPlaceableBlock(StoneBlock stonePrefab)
+    public void SetPlaceableBlock(PlaceableBlock stonePrefab)
     {
-        var stone = Instantiate(stonePrefab.Prefab, new Vector3(transform.position.x, transform.position.y + 3.5f, transform.position.z), Quaternion.identity);
-        PlacedBlock = stone.GetComponent<StoneBlock>();
+        var stone = Instantiate(stonePrefab, new Vector3(transform.position.x, transform.position.y + 4f, transform.position.z), Quaternion.identity);
+        PlacedBlock = stone.GetComponent<PlaceableBlock>();
+        PlacedBlock.ParentBlock = this;
+    }
+
+    public void ClearOre()
+    {
+        Destroy(PlacedBlock.gameObject);
+        BlockHolder.Blocks[Position[0], Position[1]].PlacedBlock = null;
     }
 }
