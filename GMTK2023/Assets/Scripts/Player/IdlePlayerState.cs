@@ -1,20 +1,23 @@
-﻿internal class IdlePlayerState : BasicPlayerState
+﻿using System.Collections.Generic;
+using System.Linq;
+
+internal class IdlePlayerState : BasicPlayerState
 {
-    private const int InteractionDistance = 2;
-
-
+    private List<Block> _entities;
     public IdlePlayerState(PlayerBehavior player) : base(player)
+    { }
+
+    public override void OnStateEnter()
     {
+        _entities = Player.ScanAreaAroundPlayer<WorkbenchBlock>().Where(x => ((WorkbenchBlock)x.PlacedBlock).IsCrafting).ToList();
     }
 
     public override void Update()
     {
-        /*var workbench = Target.PlacedBlock as WorkbenchBlock;
-        if (!workbench.IsCrafting)
-        {
-            Player.Inventory.AddItems(workbench.PickItemsUp());
+        if (_entities.Count == 0)
             Player.SwitchState<SortingPlayerState>();
-            currentState = StateMode.None;
-        }*/
+        
+         
+
     }
 }
