@@ -1,28 +1,23 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 internal class IdlePlayerState : BasicPlayerState
 {
-    private const int InteractionDistance = 2;
-
-    private Block target;
-    private Vector2Int targetPosition;
-
-    public Block Target
-    {
-        get => target;
-        private set
-        {
-            target = value;
-            targetPosition = Vector2Int.FloorToInt(value.transform.position);
-        }
-    }
-
+    private List<Block> _entities;
     public IdlePlayerState(PlayerBehavior player) : base(player)
+    { }
+
+    public override void OnStateEnter()
     {
+        _entities = Player.ScanAreaAroundPlayer<WorkbenchBlock>().Where(x => ((WorkbenchBlock)x.PlacedBlock).IsCrafting).ToList();
     }
 
     public override void Update()
     {
+        if (_entities.Count == 0)
+            Player.SwitchState<SortingPlayerState>();
+        
+         
+
     }
 }

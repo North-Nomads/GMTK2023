@@ -367,13 +367,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8b9c36aaf34e14dbc0ee24c87f28df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSize: 5
+  mapSize: 15
   playerBehavior: {fileID: 3373293338953399993, guid: 57706dd9df4cb644898cb98113329b57, type: 3}
   tile: {fileID: -8829316553392737983, guid: cb5b07f54bcbac340a107ab8211ccbd4, type: 3}
   stonePrefab_small: {fileID: 2547967918518213282, guid: 1b9de70443a782d44abebfd98c4aa536, type: 3}
   stonePrefab_medium: {fileID: 5238547517017323055, guid: c173201d11a35634e8f093f585bf8923, type: 3}
   stonePrefab_large: {fileID: 2988796561169163449, guid: 81f52b257cec2f3479849bd44f53fa79, type: 3}
-  noiseScale: 40
+  noiseScale: 20
 --- !u!1 &1863394311
 GameObject:
   m_ObjectHideFlags: 0
