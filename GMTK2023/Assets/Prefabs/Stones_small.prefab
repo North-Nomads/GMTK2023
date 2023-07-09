@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1005609985067640191}
-  - component: {fileID: 5942251664153043851}
+  - component: {fileID: 8250663188657814512}
   m_Layer: 0
   m_Name: Stones_small
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5942251664153043851
+--- !u!114 &8250663188657814512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

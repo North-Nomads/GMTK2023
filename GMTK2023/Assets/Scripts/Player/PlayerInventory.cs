@@ -4,40 +4,40 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private int stonesAmount;
-    private int ironAmount;
+    private int _stonesAmount;
+    private int _ironAmount;
 
     public int Capacity => 8;
 
     public int Stones
     {
-        get => stonesAmount;
+        get => _stonesAmount;
         set 
         {
-            if (Capacity - ironAmount < value)
+            if (Capacity - _ironAmount < value)
             {
-                stonesAmount = Capacity - ironAmount;
+                _stonesAmount = Capacity - _ironAmount;
                 return;
             }
-            stonesAmount = value;
+            _stonesAmount = value;
         }
     }
 
     public int Iron
     {
-        get => ironAmount;
+        get => _ironAmount;
         set
         {
-            if (Capacity - stonesAmount < value)
+            if (Capacity - _stonesAmount < value)
             { 
-                ironAmount = Capacity - stonesAmount;
+                _ironAmount = Capacity - _stonesAmount;
                 return;
             }
-            ironAmount = value;
+            _ironAmount = value;
         }
     }
 
-    public bool IsFull => stonesAmount + ironAmount == Capacity;
+    public bool IsFull => _stonesAmount + _ironAmount == Capacity;
 
-    public void Clear() => stonesAmount = ironAmount = 0;
+    public void Clear() => _stonesAmount = _ironAmount = 0;
 }

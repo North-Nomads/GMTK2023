@@ -4,6 +4,7 @@ public class Block : MonoBehaviour
 {
     [SerializeField] private float defaultStressValue;
     [SerializeField] private float scaleFactor;
+
     [SerializeField] private Texture enabledTexture;
     [SerializeField] private Texture enadbledSelectedTexture;
     [SerializeField] private Texture disadbledTexture;
