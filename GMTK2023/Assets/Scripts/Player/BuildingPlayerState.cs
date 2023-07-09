@@ -8,6 +8,7 @@ internal class BuildingPlayerState : BasicPlayerState
     private float _buildingTimeLeft;
     private float _movingTimeLeft;
     private int _furnacesLeft;
+    private int _chestLeft;
     private Block _focusBlock;
     private bool _hasReachedFocusPoint;
 
@@ -19,7 +20,8 @@ internal class BuildingPlayerState : BasicPlayerState
 
     public override void OnStateEnter()
     {
-        _furnacesLeft = Random.Range(1, 2);
+        _furnacesLeft = Random.Range(0, 3);
+        _chestLeft = Random.Range(0, 3);
         _movingTimeLeft = .5f;
     }
 
@@ -27,9 +29,10 @@ internal class BuildingPlayerState : BasicPlayerState
     public override void Update()
     {
         // Если печек больше нет, то выходим из состояния
-        if (_furnacesLeft == 0)
+        if (_furnacesLeft == 0 && _chestLeft == 0)
         {
             Player.SwitchState<IdlePlayerState>();
+            Player.Inventory.Clear();
             return;
         }
 
@@ -42,7 +45,7 @@ internal class BuildingPlayerState : BasicPlayerState
             _isFocused = true;
         }
         // Если ячейка найдена - идем к ней с промежутком в movingTimeLeft секунд
-        else if (_isFocused && !_hasReachedFocusPoint)
+        else if (!_hasReachedFocusPoint)
         {
             _movingTimeLeft -= Time.deltaTime;
             if (_movingTimeLeft >= 0)
@@ -59,7 +62,27 @@ internal class BuildingPlayerState : BasicPlayerState
             _buildingTimeLeft -= Time.deltaTime;
             if (_buildingTimeLeft > 0)
                 return;
-            MapGenerator.InstantiateInteractableObject(_furnace, _focusBlock);
+            // Определяем, что ставить
+            bool craftChest = false;
+            if (_chestLeft > 0)
+            {
+                if (Random.value > 0.5) craftChest = true;
+            }
+            if (_furnacesLeft > 0)
+            {
+                craftChest = true;
+            }
+            // Ставим блок
+            if (craftChest)
+            {
+                MapGenerator.InstantiateInteractableObject(_chest, _focusBlock);
+                _chestLeft--;
+            }
+            else
+            {
+                MapGenerator.InstantiateInteractableObject(_furnace, _focusBlock);
+                _furnacesLeft--;
+            }
         }
         
 
