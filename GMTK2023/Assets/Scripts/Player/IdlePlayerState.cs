@@ -14,7 +14,7 @@ internal class IdlePlayerState : BasicPlayerState
 
     public override void Update()
     {
-        if (_entities.Count == 0)
+        if (_entities.Count > 0)
         {
             _entities.Clear();
             Player.SwitchState<SortingPlayerState>();
