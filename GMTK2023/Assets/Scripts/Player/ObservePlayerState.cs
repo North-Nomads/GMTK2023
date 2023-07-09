@@ -19,8 +19,6 @@ internal class ObservePlayerState : BasicPlayerState
         // Reboot timer
         _currentScanTimer = _scanTimer;
         
-        Debug.Log($"{Player.Inventory.Stones}, {Player.Inventory.Capacity}");
-        
         if (Player.Inventory.IsFull)
         {
             var baseCoords = Player.GetNextCoordTowards(Player.PlayerBaseCoords); // base
