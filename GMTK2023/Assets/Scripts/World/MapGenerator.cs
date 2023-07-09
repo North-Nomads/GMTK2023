@@ -61,4 +61,10 @@ public class MapGenerator : MonoBehaviour
             }
         }
     }
+
+    public static void InstantiateInteractableObject(WorkbenchBlock interactiveBlock, Block focusBlock)
+    {
+        focusBlock.SetPlaceableBlock(interactiveBlock);
+        BlockHolder.Entities.Add(focusBlock.PlacedBlock);
+    }
 }

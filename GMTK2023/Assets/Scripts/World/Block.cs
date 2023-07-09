@@ -72,10 +72,10 @@ public class Block : MonoBehaviour
         _position = position;
     }
 
-    public void SetPlaceableBlock(StoneBlock stonePrefab)
+    public void SetPlaceableBlock(PlaceableBlock stonePrefab)
     {
-        var stone = Instantiate(stonePrefab.Prefab, new Vector3(transform.position.x, transform.position.y + 3.5f, transform.position.z), Quaternion.identity);
-        PlacedBlock = stone.GetComponent<StoneBlock>();
+        var stone = Instantiate(stonePrefab, new Vector3(transform.position.x, transform.position.y + 4f, transform.position.z), Quaternion.identity);
+        PlacedBlock = stone.GetComponent<PlaceableBlock>();
         PlacedBlock.ParentBlock = this;
     }
 

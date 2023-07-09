@@ -98,7 +98,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5e5b3cfab5b73be44b6d21f31905fae0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7de9aa70792013b48bc2031b544d490f, type: 2}
+      objectReference: {fileID: 2100000, guid: 94973367884c181489e1d22f727f50ca, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e5b3cfab5b73be44b6d21f31905fae0, type: 3}
       propertyPath: m_Name
       value: block
@@ -136,12 +136,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7786394833052020170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77a21fb89a5f157478c0de83dcb48494, type: 3}
+  m_Script: {fileID: 11500000, guid: d85cf841b3823a14a8fead6e7e0ecd79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   defaultStressValue: 0
   scaleFactor: 4
-  entityAnchor: {fileID: 7441358856161130352}
+  entityAnchor: {fileID: 5509958274164035460}
 --- !u!65 &4153432500073560096
 BoxCollider:
   m_ObjectHideFlags: 0

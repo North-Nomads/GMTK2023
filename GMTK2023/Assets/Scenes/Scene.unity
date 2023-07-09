@@ -368,11 +368,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapSize: 15
-  playerBehavior: {fileID: 3373293338953399993, guid: 57706dd9df4cb644898cb98113329b57, type: 3}
+  playerBehavior: {fileID: 3373293338953399993, guid: 9685ec61f516d4640bfa3d5d9306cf33, type: 3}
   tile: {fileID: -8829316553392737983, guid: cb5b07f54bcbac340a107ab8211ccbd4, type: 3}
-  stonePrefab_small: {fileID: 2547967918518213282, guid: 1b9de70443a782d44abebfd98c4aa536, type: 3}
-  stonePrefab_medium: {fileID: 5238547517017323055, guid: c173201d11a35634e8f093f585bf8923, type: 3}
-  stonePrefab_large: {fileID: 2988796561169163449, guid: 81f52b257cec2f3479849bd44f53fa79, type: 3}
+  stonePrefab_small: {fileID: 5942251664153043851, guid: 1b9de70443a782d44abebfd98c4aa536, type: 3}
+  stonePrefab_medium: {fileID: 5942251664153043851, guid: 1b9de70443a782d44abebfd98c4aa536, type: 3}
+  stonePrefab_large: {fileID: 5942251664153043851, guid: 1b9de70443a782d44abebfd98c4aa536, type: 3}
   noiseScale: 20
 --- !u!1 &1863394311
 GameObject:
@@ -435,7 +435,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3e97dba11f9c9e247abbe6166a15af06, type: 2}
+  - {fileID: 2100000, guid: 6d348223b36406a489ac605def2bd273, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -521,6 +521,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1913146178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba272b77baa0db144981b9e8ec7fe2c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e67721bda9e53f458adc6e9c6f0034f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapGenerator: {fileID: 1756332579}

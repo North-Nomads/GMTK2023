@@ -6,6 +6,8 @@ internal class SortingPlayerState : BasicPlayerState
 
     public override void Update()
     {
-
+        // HACK: remove when implementing.
+        Player.Inventory.Clear();
+        Player.SwitchState<ObservePlayerState>();
     }
 }

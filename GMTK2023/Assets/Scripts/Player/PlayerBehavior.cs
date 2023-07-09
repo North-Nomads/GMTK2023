@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     [SerializeField] private int scanRadius;
+    [SerializeField] private WorkbenchBlock furnace;
+    [SerializeField] private ChestBlock chest;
     
     private List<BasicPlayerState> _playerStates;
     private BasicPlayerState _currentState;
@@ -15,10 +17,8 @@ public class PlayerBehavior : MonoBehaviour
 
     public Vector2Int PlayerBaseCoords => _playerBaseCoords;
     public PlayerInventory Inventory { get; private set; }
-    public Vector2Int PlayerPosition { 
-        get => _playerPosition; 
-        set => _playerPosition = value; 
-    }
+
+    public Vector2Int PlayerPosition => _playerPosition;
 
 
     // Start is called before the first frame update
@@ -32,7 +32,7 @@ public class PlayerBehavior : MonoBehaviour
         _playerStates = new()
         {
             new ObservePlayerState(this),
-            new BuildingPlayerState(this),
+            new BuildingPlayerState(this, furnace, chest),
             new IdlePlayerState(this),
             new SortingPlayerState(this)
         };
@@ -42,6 +42,7 @@ public class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        BlockHolder.ProceesEntitiesStress();
         _currentState.Update();
     }
 
@@ -49,6 +50,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         _currentState.OnStateLeave();
         _currentState = _playerStates.OfType<T>().First();
+        Debug.Log($"New state: {typeof(T).Name}");
         _currentState.OnStateEnter();
     }
 
@@ -66,11 +68,29 @@ public class PlayerBehavior : MonoBehaviour
         for (int i = Mathf.Max(0, playerX - half); i < playerX + half && i < BlockHolder.WorldSize; i++)
         for (int j = Mathf.Max(0, playerX - half); j < playerY + half && j < BlockHolder.WorldSize; j++)
         {
-            print($"{i}, {j}");
             if (BlockHolder.Blocks[i, j].PlacedBlock is T)
                 blocks.Add(BlockHolder.Blocks[i, j]);
         }
             
+
+        return blocks;
+    }
+    
+    /// <summary>
+    /// Scans area around player according to his scan radius
+    /// </summary>
+    /// <typeparam name="T">PlacebleBlock we scan for</typeparam>
+    /// <returns>List of blocks that satisfy generic</returns>
+    public List<Block> ScanAreaAroundPlayer()
+    {
+        List<Block> blocks = new(); 
+        var half = scanRadius / 2;
+        var playerX = _playerPosition[0];
+        var playerY = _playerPosition[1];
+        for (int i = playerX - half; i < playerX + half; i++)
+        for (int j = playerY - half; j < playerY + half; j++)
+            if (BlockHolder.Blocks[i, j].PlacedBlock is null)
+                blocks.Add(BlockHolder.Blocks[i, j]);
 
         return blocks;
     }
@@ -89,6 +109,23 @@ public class PlayerBehavior : MonoBehaviour
 
         _playerPosition = point;
         gameObject.transform.position = BlockHolder.Blocks[point[0], point[1]].transform.position + Vector3.up * 5;
+    }
+    
+    public Block GetClosetBlock(List<Block> blocks)
+    {
+        var closest = blocks[0];
+        var closestDistance = Vector3.Distance(transform.position, closest.transform.position);
+        foreach (var block in blocks)
+        {
+            var newDistance = Vector3.Distance(transform.position, block.transform.position);
+            if (newDistance < closestDistance)
+            {
+                closest = block;
+                closestDistance = newDistance;
+            }
+        }
+
+        return closest;
     }
     
     /// <summary>
