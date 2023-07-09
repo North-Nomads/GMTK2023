@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 295509737137845838}
   - component: {fileID: 6011786638703617790}
   - component: {fileID: 8833706119941152425}
-  - component: {fileID: 7590250013359793030}
+  - component: {fileID: 8180977130664203425}
   m_Layer: 0
   m_Name: Furnace
   m_TagString: Untagged
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7590250013359793030
+--- !u!114 &8180977130664203425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6855982952706184745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a183e33bb5cce7a459148cd77622ddbc, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d09908cf380ed747983eae0ddc29028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   additionalStress: 0

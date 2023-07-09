@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scanRadius: 9
-  furnace: {fileID: 7590250013359793030, guid: ea0c6c03ee1395b4eb46330d9bd67066, type: 3}
-  chest: {fileID: 2031665482280452906, guid: f38da03b4af0ce5409567d08127840cb, type: 3}
+  furnace: {fileID: 8180977130664203425, guid: abcd8792d5e784f42ab787de4921d981, type: 3}
+  chest: {fileID: 6659512611700894185, guid: 3d08d950bf738c54f9f2d26ea15fe167, type: 3}
 --- !u!114 &5519326144744770188
 MonoBehaviour:
   m_ObjectHideFlags: 0
