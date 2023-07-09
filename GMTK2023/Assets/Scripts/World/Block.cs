@@ -15,9 +15,10 @@ public class Block : MonoBehaviour
     private PlaceableBlock _entityBlock;
     private bool _isEnabledForPlayer = true;
     private MeshRenderer _renderer;
-
     public Vector2Int Position => _position;
     public Transform EntityAnchor => entityAnchor;
+
+    public MainStats Stats {get; set;}
 
     public bool IsEnabled 
     { 
@@ -27,15 +28,17 @@ public class Block : MonoBehaviour
             _isEnabled = value;
             if (_isEnabled){
                 _renderer.material.SetTexture("_MainTex", enabledTexture);
-                StatsAcessor.Stats.StressInput += defaultStressValue;
+                BlockHolder.ActiveBlock.Add(this);
+                Stats.StressInput += defaultStressValue;
                 if(_entityBlock != null)
-                    StatsAcessor.Stats.StressInput += _entityBlock.AdditionalStress;
+                    Stats.StressInput += _entityBlock.AdditionalStress;
             }
             else{
                 _renderer.material.SetTexture("_MainTex", disadbledTexture);
-                StatsAcessor.Stats.StressInput -= defaultStressValue;
+                BlockHolder.ActiveBlock.Remove(this);
+                Stats.StressInput -= defaultStressValue;
                 if(_entityBlock != null)
-                    StatsAcessor.Stats.StressInput -= _entityBlock.AdditionalStress;
+                    Stats.StressInput -= _entityBlock.AdditionalStress;
             }
         }
     }

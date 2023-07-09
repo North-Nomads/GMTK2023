@@ -11,7 +11,24 @@ public class PlayerBehavior : MonoBehaviour
     private BasicPlayerState _currentState;
     private Vector2Int _playerPosition;
 
+    public List<Block> VisibleBlocks
+    {
+        get
+        {
+            List<Block> blocks = new(); 
+            var half = scanRadius / 2;
+            var playerX = _playerPosition[0];
+            var playerY = _playerPosition[1];
+            for (int i = playerX - half; i < playerX + half; i++)
+                for (int j = playerY - half; j < playerY + half; j++)
+                {
+                    blocks.Add(BlockHolder.Blocks[i, j]);
+                    BlockHolder.Blocks[i, j].gameObject.GetComponent<MeshRenderer>().material.color = new Color(0, 0,0);
+                }
 
+            return blocks;
+        }
+    }
     // Start is called before the first frame update
     private void Start()
     {

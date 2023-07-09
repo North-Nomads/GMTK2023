@@ -5,6 +5,7 @@ using World;
 
 public class MapGenerator : MonoBehaviour
 {
+    [SerializeField] private MainStats statsHolder;
     [SerializeField] private int mapSize;
     [SerializeField] private Block tile;
     [SerializeField] private StoneBlock stonePrefab_small;
@@ -21,6 +22,7 @@ public class MapGenerator : MonoBehaviour
         BlockHolder.WorldSize = mapSize;
         BlockHolder.Blocks = new Block[mapSize, mapSize];
         BlockHolder.Entities = new List<PlaceableBlock>();
+        BlockHolder.ActiveBlock = new();
         var halfMap = mapSize / 2;
         for (int i = -halfMap; i < halfMap; i++)
         {
@@ -29,6 +31,7 @@ public class MapGenerator : MonoBehaviour
                 block.SetPosition(new Vector2Int(i, j));
                 BlockHolder.Blocks[i + halfMap, j + halfMap] = block;
                 block.name = $"{i + halfMap}, {j + halfMap}";
+                block.Stats = statsHolder;
             }
         }
 
