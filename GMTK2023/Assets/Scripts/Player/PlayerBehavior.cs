@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     [SerializeField] private int scanRadius;
-    [SerializeField] private InteractiveBlock furnace;
-    [SerializeField] private InteractiveBlock chest;
+    [SerializeField] private WorkbenchBlock furnace;
+    [SerializeField] private WorkbenchBlock chest;
     
     private List<BasicPlayerState> _playerStates;
     private BasicPlayerState _currentState;

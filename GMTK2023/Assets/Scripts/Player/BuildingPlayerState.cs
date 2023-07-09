@@ -2,8 +2,8 @@ using UnityEngine;
 
 internal class BuildingPlayerState : BasicPlayerState
 {
-    private readonly InteractiveBlock _furnace;
-    private readonly InteractiveBlock _chest;
+    private readonly WorkbenchBlock _furnace;
+    private readonly WorkbenchBlock _chest;
     private bool _isFocused;
     private float _buildingTimeLeft;
     private float _movingTimeLeft;
@@ -12,7 +12,7 @@ internal class BuildingPlayerState : BasicPlayerState
     private Block _focusBlock;
     private bool _hasReachedFocusPoint;
 
-    public BuildingPlayerState(PlayerBehavior player, InteractiveBlock furnace, InteractiveBlock chest) : base(player)
+    public BuildingPlayerState(PlayerBehavior player, WorkbenchBlock furnace, WorkbenchBlock chest) : base(player)
     {
         _furnace = furnace;
         _chest = chest;
