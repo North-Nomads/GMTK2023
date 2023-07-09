@@ -25,10 +25,18 @@ public class Block : MonoBehaviour
         set
         {
             _isEnabled = value;
-            if (_isEnabled)
+            if (_isEnabled){
                 _renderer.material.SetTexture("_MainTex", enabledTexture);
-            else
+                StatsAcessor.Stats.StressInput += defaultStressValue;
+                if(_entityBlock != null)
+                    StatsAcessor.Stats.StressInput += _entityBlock.AdditionalStress;
+            }
+            else{
                 _renderer.material.SetTexture("_MainTex", disadbledTexture);
+                StatsAcessor.Stats.StressInput -= defaultStressValue;
+                if(_entityBlock != null)
+                    StatsAcessor.Stats.StressInput -= _entityBlock.AdditionalStress;
+            }
         }
     }
 

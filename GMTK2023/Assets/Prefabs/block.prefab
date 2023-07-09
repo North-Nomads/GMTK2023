@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a21fb89a5f157478c0de83dcb48494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultStressValue: 0
+  defaultStressValue: 1
   scaleFactor: 4
   entityAnchor: {fileID: 7441358856161130352}
   enabledTexture: {fileID: 2800000, guid: f6d628b2ec42f484e9c5feadb80016b9, type: 3}
