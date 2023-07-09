@@ -4,6 +4,7 @@ using World;
 
 public class MapGenerator : MonoBehaviour
 {
+    [Range(0, 1)] [SerializeField] private float stoneSpawnChance;
     [SerializeField] private MainStats statsHolder;
     [SerializeField] private int mapSize;
     [SerializeField] private PlayerBehavior playerBehavior;
@@ -11,7 +12,9 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private StoneBlock stonePrefab;
     [SerializeField] private float noiseScale;
     private PlayerBehavior _playerBehavior;
-
+    private float _stoneValue;
+ 
+        
     public int MapSize { get => mapSize; }
     public Block Tile { get => tile; }
 
@@ -20,6 +23,7 @@ public class MapGenerator : MonoBehaviour
     private void Start()
     {
         var scaleFactor = tile.ScaleFactor * 2;
+        _stoneValue = 1 - stoneSpawnChance;
         BlockHolder.WorldSize = mapSize;
         BlockHolder.Blocks = new Block[mapSize, mapSize];
         BlockHolder.Entities = new List<PlaceableBlock>();
@@ -42,14 +46,13 @@ public class MapGenerator : MonoBehaviour
 
     private void GenerateStones()
     {
-        var stoneValue = 0.7f;
         var halfMap = mapSize / 2;
         for (int i = -halfMap; i < halfMap; i++)
         {
             for (int j = -halfMap; j < halfMap; j++)
             {
                 float seed = Mathf.PerlinNoise((i + halfMap) / (float)mapSize * noiseScale, (j + halfMap) / (float)mapSize * noiseScale);
-                if (seed > stoneValue)
+                if (seed > _stoneValue)
                 {
                     BlockHolder.Blocks[i + halfMap, j + halfMap].SetPlaceableBlock(stonePrefab);
                 }

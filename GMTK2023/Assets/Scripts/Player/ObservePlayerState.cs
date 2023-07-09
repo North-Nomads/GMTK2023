@@ -34,7 +34,10 @@ internal class ObservePlayerState : BasicPlayerState
             var blocks = Player.ScanAreaAroundPlayer<StoneBlock>();
             if (blocks.Count == 0)
             {
-                Player.MoveOnPoint(Player.PlayerPosition + new Vector2Int(Random.Range(-1, 1), Random.Range(-1, 1)));
+                var posOffset = GenerateOffset();
+
+
+                Player.MoveOnPoint(Player.PlayerPosition + posOffset);
                 return;
             }
 
@@ -60,6 +63,28 @@ internal class ObservePlayerState : BasicPlayerState
             }
             _goalBlock.ParentBlock.ClearOre();
             _goalBlock = null;
+        }
+
+        Vector2Int GenerateOffset()
+        {
+            var pos = Player.PlayerPosition;
+            int xCoord, yCoord;
+            
+            if (pos[0] < 3)
+                xCoord = 1;
+            else if (pos[0] >= BlockHolder.WorldSize - 3)
+                xCoord = -1;
+            else
+                xCoord = Random.Range(-1, 1);
+
+            if (pos[1] < 3)
+                yCoord = 1;
+            else if (pos[1] >= BlockHolder.WorldSize - 3)
+                yCoord = -1;
+            else
+                yCoord = Random.Range(-1, 1);
+            
+            return new Vector2Int(xCoord, yCoord);
         }
     }
 
