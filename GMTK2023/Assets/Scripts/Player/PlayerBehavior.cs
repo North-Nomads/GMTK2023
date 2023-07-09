@@ -65,7 +65,6 @@ public class PlayerBehavior : MonoBehaviour
     {
         _currentState.OnStateLeave();
         _currentState = _playerStates.OfType<T>().First();
-        Debug.Log($"New state: {typeof(T).Name}");
         _currentState.OnStateEnter();
     }
 
