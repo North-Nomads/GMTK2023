@@ -28,7 +28,7 @@ public class PlayerBehavior : MonoBehaviour
         var half = BlockHolder.WorldSize / 2;
         _playerPosition = new Vector2Int(half, half);
         _playerBaseCoords = _playerPosition;
-        Inventory = new(10);
+        Inventory = new();
         _playerStates = new()
         {
             new ObservePlayerState(this),

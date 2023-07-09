@@ -14,18 +14,16 @@ internal class ObservePlayerState : BasicPlayerState
 
     public override void Update()
     {
-        
-        
         _currentScanTimer -= Time.deltaTime;
         if (_currentScanTimer >= 0) return;
         // Reboot timer
         _currentScanTimer = _scanTimer;
         
-        if (Player.Inventory.Size == 2)
+        if (Player.Inventory.IsFull)
         {
             var baseCoords = Player.GetNextCoordTowards(Player.PlayerBaseCoords); // base
             Player.MoveOnPoint(baseCoords);
-            if (Player.PlayerPosition == Player.PlayerBaseCoords) 
+            if (Player.PlayerPosition == Player.PlayerBaseCoords)
                 Player.SwitchState<BuildingPlayerState>();
             return;
         }
@@ -37,7 +35,7 @@ internal class ObservePlayerState : BasicPlayerState
             if (blocks.Count == 0)
             {
                 Player.MoveOnPoint(Player.PlayerPosition + new Vector2Int(Random.Range(-1, 1), Random.Range(-1, 1)));
-                Player.Inventory.Size = 2; // TODO: Убрать, временное решение для перехода в building
+                Player.Inventory.Stones = 2; // TODO: Убрать, временное решение для перехода в building
                 return;
             }
 
@@ -51,7 +49,16 @@ internal class ObservePlayerState : BasicPlayerState
         // Goal reached check
         if (_goalBlock.ParentBlock.Position == Player.PlayerPosition)
         {
-            Player.Inventory.AddItems(_goalBlock.ParentBlock.PlacedBlock.PickItemsUp());
+            var items = _goalBlock.ParentBlock.PlacedBlock.PickItemsUp();
+            switch (items.Item)
+            {
+                case ItemType.Stone:
+                    Player.Inventory.Stones += items.Count;
+                    break;
+                case ItemType.Iron:
+                    Player.Inventory.Iron += items.Count;
+                    break;
+            }
             _goalBlock.ParentBlock.ClearOre();
             _goalBlock = null;
         }

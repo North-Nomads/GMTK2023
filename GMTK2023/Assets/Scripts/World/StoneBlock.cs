@@ -4,9 +4,10 @@ namespace World
 {
     public class StoneBlock : PlaceableBlock
     {
+        private readonly ItemType inventoryItem = ItemType.Stone;
+
         [SerializeField] private int amount;
         [SerializeField] private GameObject prefab;
-        [SerializeField] private InventoryItem inventoryitem;
         
         public int Amount
         {
@@ -20,7 +21,7 @@ namespace World
 
         public override ItemsPack PickItemsUp()
         {
-            return new ItemsPack(inventoryitem, amount);
+            return new ItemsPack(inventoryItem, amount);
         }
     }
 }

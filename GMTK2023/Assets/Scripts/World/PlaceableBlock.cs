@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class PlaceableBlock : MonoBehaviour
@@ -16,11 +17,18 @@ public readonly struct ItemsPack
 {
     public int Count { get; }
 
-    public InventoryItem Item { get; }
+    public ItemType Item { get; }
 
-    public ItemsPack(InventoryItem item, int count)
+    public ItemsPack(ItemType item, int count)
     {
         Item = item;
         Count = count;
     }
+}
+
+[Serializable]
+public enum ItemType
+{
+    Stone, 
+    Iron
 }
