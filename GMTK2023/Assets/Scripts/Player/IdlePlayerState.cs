@@ -14,7 +14,8 @@ internal class IdlePlayerState : BasicPlayerState
 
     public override void Update()
     {
-        if (_entities.Count() == 0)
+        int count = _entities.Count();
+        if (count == 0)
             Player.SwitchState<SortingPlayerState>();
     }
 }

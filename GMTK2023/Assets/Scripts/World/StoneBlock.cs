@@ -7,14 +7,12 @@ namespace World
         private readonly ItemType inventoryItem = ItemType.Stone;
 
         [SerializeField] private int amount;
-        [SerializeField] private GameObject prefab;
         
         public int Amount
         {
             get => amount;
             set => amount = value;
         }
-        public GameObject Prefab => prefab;
 
         public override void ProcessTick()
         { }

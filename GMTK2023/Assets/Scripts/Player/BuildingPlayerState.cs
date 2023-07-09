@@ -3,7 +3,7 @@ using UnityEngine;
 internal class BuildingPlayerState : BasicPlayerState
 {
     private readonly WorkbenchBlock _furnace;
-    private readonly WorkbenchBlock _chest;
+    private readonly ChestBlock _chest;
     private bool _isFocused;
     private float _buildingTimeLeft;
     private float _movingTimeLeft;
@@ -12,7 +12,7 @@ internal class BuildingPlayerState : BasicPlayerState
     private Block _focusBlock;
     private bool _hasReachedFocusPoint;
 
-    public BuildingPlayerState(PlayerBehavior player, WorkbenchBlock furnace, WorkbenchBlock chest) : base(player)
+    public BuildingPlayerState(PlayerBehavior player, WorkbenchBlock furnace, ChestBlock chest) : base(player)
     {
         _furnace = furnace;
         _chest = chest;
@@ -68,14 +68,14 @@ internal class BuildingPlayerState : BasicPlayerState
             {
                 if (Random.value > 0.5) craftChest = true;
             }
-            if (_furnacesLeft > 0)
+            if (_furnacesLeft == 0)
             {
                 craftChest = true;
             }
             // Ставим блок
             if (craftChest)
             {
-                MapGenerator.InstantiateInteractableObject(_chest, _focusBlock);
+                _focusBlock.SetPlaceableBlock(_chest);
                 _chestLeft--;
             }
             else
@@ -83,10 +83,10 @@ internal class BuildingPlayerState : BasicPlayerState
                 MapGenerator.InstantiateInteractableObject(_furnace, _focusBlock);
                 _furnacesLeft--;
             }
+            _focusBlock = null;
+            _isFocused = false;
+            _hasReachedFocusPoint = false;
         }
-        
-
-
     }
 
     

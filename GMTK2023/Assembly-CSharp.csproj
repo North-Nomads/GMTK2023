@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\World\StoneBlock.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInventory.cs" />
     <Compile Include="Assets\Scripts\World\MapGenerator.cs" />
+    <Compile Include="Assets\Scripts\World\ChestBlock.cs" />
     <Compile Include="Assets\Scripts\TileSelector.cs" />
     <Compile Include="Assets\Scripts\Player\BuildingPlayerState.cs" />
     <Compile Include="Assets\Scripts\Player\BasicPlayerState.cs" />

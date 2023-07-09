@@ -7,7 +7,7 @@ public class PlayerBehavior : MonoBehaviour
 {
     [SerializeField] private int scanRadius;
     [SerializeField] private WorkbenchBlock furnace;
-    [SerializeField] private WorkbenchBlock chest;
+    [SerializeField] private ChestBlock chest;
     
     private List<BasicPlayerState> _playerStates;
     private BasicPlayerState _currentState;
@@ -42,6 +42,7 @@ public class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        BlockHolder.ProceesEntitiesStress();
         _currentState.Update();
     }
 
@@ -49,6 +50,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         _currentState.OnStateLeave();
         _currentState = _playerStates.OfType<T>().First();
+        Debug.Log($"New state: {typeof(T).Name}");
         _currentState.OnStateEnter();
     }
 
@@ -66,7 +68,6 @@ public class PlayerBehavior : MonoBehaviour
         for (int i = Mathf.Max(0, playerX - half); i < playerX + half && i < BlockHolder.WorldSize; i++)
         for (int j = Mathf.Max(0, playerX - half); j < playerY + half && j < BlockHolder.WorldSize; j++)
         {
-            print($"{i}, {j}");
             if (BlockHolder.Blocks[i, j].PlacedBlock is T)
                 blocks.Add(BlockHolder.Blocks[i, j]);
         }
