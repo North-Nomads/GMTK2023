@@ -3,17 +3,34 @@ using UnityEngine;
 
 internal class IdlePlayerState : BasicPlayerState
 {
+    private const int InteractionDistance = 2;
+
+    private StateMode currentState;
+    private Block target;
+    private Vector2Int targetPosition;
+
+    public Block Target
+    {
+        get => target;
+        private set
+        {
+            target = value;
+            targetPosition = Vector2Int.FloorToInt(value.transform.position);
+        }
+    }
+
     public IdlePlayerState(PlayerBehavior player) : base(player)
     {
     }
 
     public override void Update()
     {
-        var blocks = Player.ScanAreaAroundPlayer<InteractiveBlock>();
-        var block = blocks.OrderBy(x => Vector3.Distance(x.transform.position, Player.transform.position)).First();
-        var workbench = block.PlacedBlock as InteractiveBlock;
-        if (workbench.IsCrafting) return;
-        Player.Inventory.AddItems(workbench.PickItemsUp());
-        Player.SwitchState<SortingPlayerState>();
+        var workbench = Target.PlacedBlock as WorkbenchBlock;
+        if (!workbench.IsCrafting)
+        {
+            Player.Inventory.AddItems(workbench.PickItemsUp());
+            Player.SwitchState<SortingPlayerState>();
+            currentState = StateMode.None;
+        }
     }
 }
