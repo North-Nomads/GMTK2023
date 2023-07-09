@@ -17,10 +17,6 @@ public class PlayerBehavior : MonoBehaviour
 
     public Vector2Int PlayerBaseCoords => _playerBaseCoords;
     public PlayerInventory Inventory { get; private set; }
-    public Vector2Int PlayerPosition { 
-        get => _playerPosition; 
-        set => _playerPosition = value; 
-    }
 
     public Vector2Int PlayerPosition => _playerPosition;
 

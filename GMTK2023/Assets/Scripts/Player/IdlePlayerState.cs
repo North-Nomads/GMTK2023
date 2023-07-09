@@ -5,7 +5,6 @@ internal class IdlePlayerState : BasicPlayerState
 {
     private const int InteractionDistance = 2;
 
-    private StateMode currentState;
     private Block target;
     private Vector2Int targetPosition;
 
@@ -25,12 +24,5 @@ internal class IdlePlayerState : BasicPlayerState
 
     public override void Update()
     {
-        var workbench = Target.PlacedBlock as WorkbenchBlock;
-        if (!workbench.IsCrafting)
-        {
-            Player.Inventory.AddItems(workbench.PickItemsUp());
-            Player.SwitchState<SortingPlayerState>();
-            currentState = StateMode.None;
-        }
     }
 }
