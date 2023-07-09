@@ -102,10 +102,12 @@ public class PlayerBehavior : MonoBehaviour
         var half = scanRadius / 2;
         var playerX = _playerPosition[0];
         var playerY = _playerPosition[1];
-        for (int i = playerX - half; i < playerX + half; i++)
-        for (int j = playerY - half; j < playerY + half; j++)
+        for (int i = Mathf.Max(0, playerX - half); i < playerX + half && i < BlockHolder.WorldSize; i++)
+        for (int j = Mathf.Max(0, playerX - half); j < playerY + half && j < BlockHolder.WorldSize; j++)
+        {
             if (BlockHolder.Blocks[i, j].PlacedBlock is null)
                 blocks.Add(BlockHolder.Blocks[i, j]);
+        }
 
         return blocks;
     }

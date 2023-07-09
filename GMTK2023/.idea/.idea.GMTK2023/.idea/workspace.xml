@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8b6cd127-9179-40fa-ae3b-55fb99316b1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/ObservePlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/ObservePlayerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

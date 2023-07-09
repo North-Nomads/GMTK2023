@@ -4,12 +4,21 @@ using World;
 
 internal class ObservePlayerState : BasicPlayerState
 {
-    private float _scanTimer = .5f;
+    private const float ScanTimer = .5f;
     private float _currentScanTimer;
     private PlaceableBlock _goalBlock;
+    private int _failedScanCounter;
+    private bool _isHeadingHome;
+
     public ObservePlayerState(PlayerBehavior player) : base(player)
     {
-        _currentScanTimer = _scanTimer;
+        _currentScanTimer = ScanTimer;
+    }
+
+    public override void OnStateEnter()
+    {
+        _isHeadingHome = false;
+        _failedScanCounter = 0;
     }
 
     public override void Update()
@@ -17,9 +26,9 @@ internal class ObservePlayerState : BasicPlayerState
         _currentScanTimer -= Time.deltaTime;
         if (_currentScanTimer >= 0) return;
         // Reboot timer
-        _currentScanTimer = _scanTimer;
-        
-        if (Player.Inventory.IsFull)
+        _currentScanTimer = ScanTimer;
+
+        if (Player.Inventory.IsFull || _isHeadingHome) 
         {
             var baseCoords = Player.GetNextCoordTowards(Player.PlayerBaseCoords); // base
             Player.MoveOnPoint(baseCoords);
@@ -35,9 +44,13 @@ internal class ObservePlayerState : BasicPlayerState
             if (blocks.Count == 0)
             {
                 var posOffset = GenerateOffset();
-
-
                 Player.MoveOnPoint(Player.PlayerPosition + posOffset);
+                _failedScanCounter++;
+                if (_failedScanCounter == 3)
+                {
+                    _isHeadingHome = true;
+                    _failedScanCounter = 0;
+                }
                 return;
             }
 
