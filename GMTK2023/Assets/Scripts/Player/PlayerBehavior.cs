@@ -124,6 +124,8 @@ public class PlayerBehavior : MonoBehaviour
 
         if (Mathf.Abs(_playerPosition[0] - point[0]) > 1 || Mathf.Abs(_playerPosition[1] - point[1]) > 1) return;
 
+        var position = BlockHolder.Blocks[point[0], point[1]].transform.position;
+        transform.LookAt(new Vector3(position.x, transform.position.y, position.z));
         _playerPosition = point;
         gameObject.transform.position = BlockHolder.Blocks[point[0], point[1]].transform.position + Vector3.up * 5;
     }
