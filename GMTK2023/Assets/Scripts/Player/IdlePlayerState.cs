@@ -18,6 +18,7 @@ internal class IdlePlayerState : BasicPlayerState
         {
             _entities.Clear();
             Player.SwitchState<SortingPlayerState>();
+            return;
         }
             
 
