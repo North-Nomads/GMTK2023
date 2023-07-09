@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scanRadius: 9
-  furnace: {fileID: 7922130348083482331, guid: abcd8792d5e784f42ab787de4921d981, type: 3}
+  furnace: {fileID: -4893162669488693625, guid: 5f844a66c7d91c1458a379e361f5229c, type: 3}
   chest: {fileID: 5547152658040717463, guid: 3d08d950bf738c54f9f2d26ea15fe167, type: 3}
 --- !u!114 &-4131362259711696816
 MonoBehaviour:
